@@ -17,10 +17,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStaff AStaff = new clsStaff();
         AStaff.StaffId = txtStaffId.Text;
-        AStaff.PhoneNumber = txtStaffPhoneNumber.Text;
+        //AStaff.PhoneNumber = txtStaffPhoneNumber.Text;
         AStaff.StaffName = txtStaffName.Text;
-        AStaff.DOB = txtStaffDateOfBirth.Text;
-        AStaff.Gender = txtStaffGender.Text;
+        //AStaff.DOB = txtStaffDateOfBirth.Text;
+        //AStaff.Gender = txtStaffGender.Text;
         AStaff.Roles =  txtStaffRoles.Text;
 
         Session["AStaff"] = AStaff;
