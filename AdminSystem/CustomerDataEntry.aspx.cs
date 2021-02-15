@@ -20,6 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ACustomer.Email = txtCustomerEmail.Text;
         ACustomer.BillingAddress = txtCustomerAddress.Text;
         ACustomer.Pass = txtCustomerPassword.Text;
+        ACustomer.DateOfBirth = Convert.ToDateTime(txtCustomerDateOfBirth.Text);
         Session["ACustomer"] = ACustomer;
         Response.Redirect("CustomerViewer.aspx");
 
