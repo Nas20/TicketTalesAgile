@@ -18,10 +18,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
         AnOrder.Id = txtOrderId.Text;
-        //AnOrder.CustomerId = txtCustomerId.Text;
-        //AnOrder.Address = txtCustomerAddress.Text;
-        //AnOrder.ItemName = txtItemName.Text;
-        //AnOrder.ItemQuantity = txtItemQuantity.Text;
+        AnOrder.CustomerId = txtCustomerId.Text;
+        AnOrder.Address = txtCustomerAddress.Text;
+        AnOrder.ItemName = txtItemName.Text;
+        AnOrder.ItemQuantity = txtItemQuantity.Text;
+        AnOrder.DateDispatch = Convert.ToDateTime(txtDispatchDate.Text);
         Session["AnOrder"] = AnOrder;
         Response.Redirect("OrderViewer.aspx");
     }

@@ -1,4 +1,6 @@
-﻿namespace Testing4
+﻿using System;
+
+namespace Testing4
 {
     public class clsOrder
     {
@@ -7,5 +9,6 @@
         public string Address { get; set; }
         public string Id { get; set; }
         public string CustomerId { get; set; }
+        public DateTime DateDispatch { get; set; }
     }
 }
