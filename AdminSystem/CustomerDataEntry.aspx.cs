@@ -16,6 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnConfirm_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
+        ACustomer.Id = Convert.ToInt32(txtCustomerID.Text);
         ACustomer.Name = txtCustomerName.Text;
         ACustomer.Email = txtCustomerEmail.Text;
         ACustomer.BillingAddress = txtCustomerAddress.Text;
@@ -26,3 +27,4 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 }
+
