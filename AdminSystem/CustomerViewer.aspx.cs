@@ -12,9 +12,10 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
         ACustomer = (clsCustomer)Session["ACustomer"];
+        Response.Write(ACustomer.Id);
         Response.Write(ACustomer.Name);
-        Response.Write(ACustomer.Pass);
         Response.Write(ACustomer.Email);
+        Response.Write(ACustomer.Pass);
         Response.Write(ACustomer.BillingAddress);
         Response.Write(ACustomer.DateOfBirth);
 
