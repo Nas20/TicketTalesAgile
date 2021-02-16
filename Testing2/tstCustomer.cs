@@ -69,6 +69,117 @@ namespace Testing2
             int TestData = 1;
             ACustomer.Id = TestData;
             Assert.AreEqual(ACustomer.Id, TestData);
+
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestCustomerIDNoFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.Id != 3)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerDOBFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.DateOfBirth != Convert.ToDateTime("16/09/2001"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerPassFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.Pass != ("Test Password"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerEmailFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.Email != ("Test Email @ email.com"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerActiveFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.Active != (true))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.Name != ("Test Name"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        public void TestCustomerBillingAddressFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 3;
+            Found = ACustomer.Find(CustomerId);
+            if (ACustomer.BillingAddress != ("Test Street"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 }
+
+
