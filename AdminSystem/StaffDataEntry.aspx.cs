@@ -16,16 +16,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnok_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        AStaff.StaffId = txtStaffId.Text;
-        //AStaff.PhoneNumber = txtStaffPhoneNumber.Text;
-        AStaff.StaffName = txtStaffName.Text;
-        //AStaff.DOB = txtStaffDateOfBirth.Text;
-        //AStaff.Gender = txtStaffGender.Text;
+        AStaff.Id = Convert.ToInt32(txtStaffId.Text);
+        AStaff.PhoneNumber = Convert.ToInt32(txtStaffPhoneNumber.Text);
+        AStaff.Name = txtStaffName.Text;
+        AStaff.Email = txtStaffEmail.Text;
+        AStaff.DOB = Convert.ToDateTime(txtStaffDateOfBirth.Text);
         AStaff.Roles =  txtStaffRoles.Text;
-
-        Session["AStaff"] = AStaff;
+        Session["AStaff"] = AStaff;        
         Response.Redirect("StaffViewer.aspx");
     }
-   
-
 }
