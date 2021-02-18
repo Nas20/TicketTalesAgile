@@ -22,7 +22,7 @@ namespace Testing2
             Assert.AreEqual(ACustomer.Active, TestData);
         }
         [TestMethod]
-        public void DateOfBirthOK()
+        public void DOBOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             DateTime TestData = DateTime.Now.Date;
@@ -76,8 +76,8 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
             Assert.IsTrue(Found);
 
         }
@@ -87,8 +87,8 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
             if (ACustomer.Id != 3)
             {
                 OK = false;
@@ -101,9 +101,9 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
-            if (ACustomer.DateOfBirth != Convert.ToDateTime("16/09/2001"))
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
+            if (ACustomer.DateOfBirth != Convert.ToDateTime("1999/01/11"))
             {
                 OK = false;
             }
@@ -115,9 +115,9 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
-            if (ACustomer.Pass != ("Test Password"))
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
+            if (ACustomer.Pass != ("Mm66ike99                                                   "))
             {
                 OK = false;
             }
@@ -129,9 +129,9 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
-            if (ACustomer.Email != ("Test Email @ email.com"))
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
+            if (ACustomer.Email != ("mike34@gmail.com"))
             {
                 OK = false;
             }
@@ -143,8 +143,8 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
             if (ACustomer.Active != (true))
             {
                 OK = false;
@@ -157,22 +157,23 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
-            if (ACustomer.Name != ("Test Name"))
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
+            if (ACustomer.Name != ("Mike Hall"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestCustomerBillingAddressFound()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 3;
-            Found = ACustomer.Find(CustomerId);
-            if (ACustomer.BillingAddress != ("Test Street"))
+            Int32 Id = 3;
+            Found = ACustomer.Find(Id);
+            if (ACustomer.BillingAddress != ("22 Skyrise Lane LE26DA"))
             {
                 OK = false;
             }
