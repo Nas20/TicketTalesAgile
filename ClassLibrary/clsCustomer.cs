@@ -5,7 +5,7 @@ namespace ClassLibrary
     public class clsCustomer
     {
         private Int32 mId;
-        private DateTime mDateOfBirth;
+        private DateTime mDOB;
         private string mBillingAddress;
         private string mPass;
         private Boolean mActive;
@@ -28,11 +28,11 @@ namespace ClassLibrary
         {
             get
             {
-                return mDateOfBirth;
+                return mDOB;
             }
             set
             {
-                mDateOfBirth = value;
+                mDOB = value;
             }
         }
         public string BillingAddress
@@ -93,14 +93,25 @@ namespace ClassLibrary
 
         public bool Find(int customerId)
         {
-            mId = 3;
-            mDateOfBirth = Convert.ToDateTime("16/09/2001");
-            mBillingAddress = "Test Street";
-            mPass = "Test Password";
-            mName = "Test Name";
-            mEmail = "Test Email @ email.com";
-            mActive = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerId", customerId);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            if(DB.Count == 1)
+            {
+                mId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mPass = Convert.ToString(DB.DataTable.Rows[0]["CustomerPass"]);
+                mBillingAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerBillingAddress"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsCustomerActive"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }
