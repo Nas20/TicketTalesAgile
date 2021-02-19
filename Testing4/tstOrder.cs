@@ -21,8 +21,8 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             int TestData = 1;
-            AnOrder.Id = TestData;
-            Assert.AreEqual(AnOrder.Id, TestData);
+            AnOrder.OrderId = TestData;
+            Assert.AreEqual(AnOrder.OrderId, TestData);
         }
 
         [TestMethod]
@@ -30,8 +30,8 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             int TestData = 1;
-            AnOrder.Id = TestData;
-            Assert.AreEqual(AnOrder.Id, TestData);
+            AnOrder.CustomerId = TestData;
+            Assert.AreEqual(AnOrder.CustomerId, TestData);
         }
 
         [TestMethod]
@@ -78,5 +78,121 @@ namespace Testing4
             AnOrder.Made = TestData;
             Assert.AreEqual(AnOrder.Made, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean FoundTest = false;
+            Int32 OrderID = 1;
+            FoundTest = AnOrder.Find(OrderID);
+            Assert.IsTrue(FoundTest);
+        }
+
+        [TestMethod]
+        public void TestOrderIdNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.OrderId != 11)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerIdNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Order1d = 11;
+            Found = AnOrder.Find(Order1d);
+            if (AnOrder.CustomerId != 12)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerAddressFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.Address != "1 Green Street")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateDispatchFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.DateDispatch != Convert.ToDateTime("24/02/2021"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestItemNameFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.ItemName != "Wonder Woman 1984")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestItemQuantityFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.ItemQuantity != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestMadeFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 11;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.Made != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+    
     }
 }
