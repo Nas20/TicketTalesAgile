@@ -22,6 +22,7 @@ namespace Testing4
                 mOrderId = value;
             }
         }
+
         public string Address {
             get
             {
@@ -65,7 +66,7 @@ namespace Testing4
                 mItemQuantity = value;
             }
         }
-        public bool Dispatched { get; internal set; }
+
         public bool Made
         {
             get
@@ -88,7 +89,9 @@ namespace Testing4
             }
         }
 
-        public bool Find(int OrderID)
+
+
+        public bool Find(int OrderId)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderId", OrderId);
