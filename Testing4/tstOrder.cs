@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing4
@@ -95,9 +96,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderId != 11)
+            if (AnOrder.OrderId != 1)
             {
                 OK = false;
             }
@@ -110,9 +111,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Order1d = 11;
+            Int32 Order1d = 1;
             Found = AnOrder.Find(Order1d);
-            if (AnOrder.CustomerId != 12)
+            if (AnOrder.CustomerId != 1)
             {
                 OK = false;
             }
@@ -125,9 +126,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.Address != "1 Green Street")
+            if (AnOrder.Address != "5 Colin Grundy Drive")
             {
                 OK = false;
             }
@@ -140,9 +141,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.DateDispatch != Convert.ToDateTime("24/02/2021"))
+            if (AnOrder.DateDispatch != Convert.ToDateTime("14/02/2021"))
             {
                 OK = false;
             }
@@ -155,7 +156,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
             if (AnOrder.ItemName != "Wonder Woman 1984")
             {
@@ -170,7 +171,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
             if (AnOrder.ItemQuantity != 2)
             {
@@ -185,7 +186,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 11;
+            Int32 OrderId = 1;
             Found = AnOrder.Find(OrderId);
             if (AnOrder.Made != true)
             {
