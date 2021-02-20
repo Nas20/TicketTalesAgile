@@ -88,16 +88,26 @@ namespace Testing4
             }
         }
 
-        public bool Find(int orderID)
+        public bool Find(int OrderId)
         {
-            mOrderId = 11;
-            mCustomerId = 12;
-            mAddress = "1 Green Street";
-            mDateDispatch = Convert.ToDateTime("24/02/2021");
-            mItemName = "Wonder Woman 1984";
-            mItemQuantity = 2;
-            mMade = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", OrderId);
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            if (DB.Count == 1)
+            { 
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mDateDispatch = Convert.ToDateTime(DB.DataTable.Rows[0]["DateofOrderDispatch"]);
+                mItemName = Convert.ToString(DB.DataTable.Rows[0]["ItemName"]);
+                mItemQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ItemQuantity"]);
+                mMade = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderMade"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
