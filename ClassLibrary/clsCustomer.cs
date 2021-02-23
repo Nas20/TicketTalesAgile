@@ -24,7 +24,70 @@ namespace ClassLibrary
                 mActive = value;
             }
         }
-        public DateTime DateOfBirth
+
+        public string Valid(string cDOB, string cName, string cEmail, string cBillingAddress, string cPass)
+        {
+            String Error = "";
+            DateTime DateTemp;
+
+            if (cName.Length == 0)
+            {
+                Error = Error + "The Name may not be blank : ";
+            }
+            if (cName.Length > 50)
+            {
+                Error = Error + "The Name must be less than 50 characters : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(cDOB);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            if (cEmail.Length == 0)
+            {
+                Error = Error + "The Email may not be blank : ";
+            }
+            if (cEmail.Length > 50)
+            {
+                Error = Error + "The Email must be less than 50 characters : ";
+            }
+
+
+            if (cPass.Length == 0)
+            {
+                Error = Error + "The Password may not be blank : ";
+            }
+            if (cPass.Length > 60)
+            {
+                Error = Error + "The Password must be less than 60 characters : ";
+            }
+
+
+            if (cBillingAddress.Length == 0)
+            {
+                Error = Error + "The BillingAddress may not be blank : ";
+            }
+            if (cBillingAddress.Length > 100)
+            {
+                Error = Error + "The BillingAddress must be less than 50 characters : ";
+            }
+            return Error;
+        }
+public DateTime DateOfBirth
         {
             get
             {
