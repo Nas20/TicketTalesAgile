@@ -16,14 +16,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnConfirm_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
-        ACustomer.Id = Convert.ToInt32(txtCustomerID.Text);
-        ACustomer.Name = txtCustomerName.Text;
-        ACustomer.Email = txtCustomerEmail.Text;
-        ACustomer.BillingAddress = txtCustomerAddress.Text;
-        ACustomer.Pass = txtCustomerPassword.Text;
-        ACustomer.DateOfBirth = Convert.ToDateTime(txtCustomerDateOfBirth.Text);
-        Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+        string Name = txtCustomerName.Text;
+        string DOB = txtCustomerDateOfBirth.Text;
+        string Email = txtCustomerEmail.Text;
+        string Password = txtCustomerPassword.Text;
+        string BillingAddress = txtCustomerAddress.Text;
+        string Error = "";
+
+        Error = ACustomer.Valid(Name, DOB, Email, Password, BillingAddress);
+
+        if( Error == "")
+        {
+            ACustomer.Name = Name;
+            ACustomer.DateOfBirth = Convert.ToDateTime(DOB);
+            ACustomer.Pass = Password;
+            ACustomer.BillingAddress = BillingAddress;
+            ACustomer.Email = Email;
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomerViewer.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
+
 
     }
 
