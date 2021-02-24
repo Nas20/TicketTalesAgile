@@ -103,14 +103,25 @@ namespace ClassLibrary
 
         public bool Find(int id)
         {
-            mId = 21;
-            mDOB = Convert.ToDateTime("19/04/1996");
-            mEmail = ("Test Email");
-            mName = ("Test Name");
-            mPhoneNumber = 112;
-            mGender = true;
-            mRoles = ("Test Roles");
-            return true;
+            clsStaff DB = new clsStaff();
+            DB.AddParameter("@Id", StaffId);
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            if(DB.Count == 1)
+            {
+                mId = Convert.ToInt32(DB.DataTable.Rows[0]["21"]);
+                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["19/04/1996"]();
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Test Email"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Test Name"]);
+                mPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["112"]);
+                mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
+                mRoles = Convert.ToString(DB.DataTable.Rows[0]["Test Roles"]);
+                return true;       
+            }
+
+            else
+            {
+                return false;
+            }
         }
   
 
