@@ -32,11 +32,40 @@ namespace ClassLibrary
 
             if (cName.Length == 0)
             {
-                Error = Error + "The Name may not be blank : ";
+                Error = Error + "The name may not be blank : ";
             }
             if (cName.Length > 50)
             {
-                Error = Error + "The Name must be less than 50 characters : ";
+                Error = Error + "The name must be less than 50 characters : ";
+            }
+           
+            if (cEmail.Length == 0)
+            {
+                Error = Error + "The email may not be blank : ";
+            }
+            if (cEmail.Length > 50)
+            {
+                Error = Error + "The email must be less than 50 characters : ";
+            }
+
+
+            if (cPass.Length == 0)
+            {
+                Error = Error + "The password may not be blank : ";
+            }
+            if (cPass.Length > 60)
+            {
+                Error = Error + "The password must be less than 60 characters : ";
+            }
+
+
+            if (cBillingAddress.Length == 0)
+            {
+                Error = Error + "The billing address may not be blank : ";
+            }
+            if (cBillingAddress.Length > 100)
+            {
+                Error = Error + "The billing address must be less than 100 characters : ";
             }
             try
             {
@@ -54,36 +83,6 @@ namespace ClassLibrary
             catch
             {
                 Error = Error + "The date was not a valid date : ";
-            }
-
-
-            if (cEmail.Length == 0)
-            {
-                Error = Error + "The Email may not be blank : ";
-            }
-            if (cEmail.Length > 50)
-            {
-                Error = Error + "The Email must be less than 50 characters : ";
-            }
-
-
-            if (cPass.Length == 0)
-            {
-                Error = Error + "The Password may not be blank : ";
-            }
-            if (cPass.Length > 60)
-            {
-                Error = Error + "The Password must be less than 60 characters : ";
-            }
-
-
-            if (cBillingAddress.Length == 0)
-            {
-                Error = Error + "The BillingAddress may not be blank : ";
-            }
-            if (cBillingAddress.Length > 100)
-            {
-                Error = Error + "The BillingAddress must be less than 50 characters : ";
             }
             return Error;
         }

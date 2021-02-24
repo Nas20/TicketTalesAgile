@@ -24,7 +24,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerNameLessOne()
+        public void CustomerNameMinLessOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -149,6 +149,41 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
+        public void CustomerDateOfBirthMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string CDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDateOfBirthMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string CDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDateOfBirthMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1);
+            string CDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
         public void CustomerDateOfBirthExtremeMax()
         {
             clsCustomer ACustomer = new clsCustomer();
@@ -170,7 +205,7 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CustomerEmailLessOne()
+        public void CustomerEmailMinLessOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -189,7 +224,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerEmailPlusOne()
+        public void CustomerEmailMinPlusOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -239,7 +274,7 @@ namespace Testing2
         }
        
          [TestMethod]
-        public void CustomerPassLessOne()
+        public void CustomerPassMinLessOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -258,7 +293,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerPassPlusOne()
+        public void CustomerPassMinPlusOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -308,7 +343,7 @@ namespace Testing2
         }
        
         [TestMethod]
-        public void CustomerBllingAddressMin()
+        public void CustomerBillingAddressMin()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
@@ -318,13 +353,22 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerBillingAddressPlusOne()
+        public void CustomerBillingAddressMinPlusOne()
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CBillingAddress = "Nn";
             Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerBillingAddressMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            string CBillingAddress = "";
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerBillingAddressMaxLessOne()
@@ -366,9 +410,39 @@ namespace Testing2
             Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
-     
+        [TestMethod]
+        public void CustomerEmailExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            string CEmail = "";
+            CEmail = CEmail.PadRight(500, 'n');
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPassExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            string CPass = "";
+            CPass = CPass.PadRight(500, 'n');
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            string CBillingAddress = "";
+            CBillingAddress = CBillingAddress.PadRight(500, 'n');
+            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Assert.AreNotEqual(Error, "");
+        }
 
-     
+
+
         [TestMethod]
         public void InstanceOK()
         {
