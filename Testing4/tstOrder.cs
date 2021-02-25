@@ -4,9 +4,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing4
 {
+    
     [TestClass]
     public class TstOrder
     {
+        //good test data
+        string CId = "13";
+        string CAddress = "3 Bobby Avenue";
+        string IName = "Some Movie";
+        string IQuantity = "12";
+        string DDispatch = DateTime.Now.Date.ToString();
         [TestMethod]
         public void InstanceOK()
         {
@@ -193,6 +200,334 @@ namespace Testing4
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            String Error = "";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CIDMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CId = "";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CIDMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CId = "1";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CIDMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CId = "12";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressLessThanOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "1";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "11";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressMaxLessThanOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CAddressMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string CAddress = "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111!";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchExtremMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void dDispatchInvalidData()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string DDispatch = "this is not a date!";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "J";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "JJ";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            IName = IName.PadRight(49, 'a');
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            IName = IName.PadRight(50, 'a');
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            IName = IName.PadRight(51, 'a');
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameExtremMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            IName = IName.PadRight(500, 'a');
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void INameMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "";
+            IName = IName.PadRight(25, 'a');
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "1";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IName = "11";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "99";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "100";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "101";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IQuantityInvalidData()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string IQuantity = "This is not a valid number!";
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreNotEqual(Error, "");
         }
     
     }

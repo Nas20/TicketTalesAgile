@@ -109,5 +109,71 @@ namespace Testing4
                 return false;
             }
         }
+
+        public string Valid(string cId, string cAddress, string dDispatch, string iName, string iQuantity)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (cId.Length == 0)
+            {
+                Error = Error + "The Id may not be blank: ";
+            }
+
+            if (cAddress.Length == 0)
+            {
+                Error = Error + "The Address may not be blank: ";
+            }
+
+            if (cAddress.Length > 100)
+            {
+                Error = Error + "The Address must be less than 100 characters: ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dDispatch);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date is an invalid date: ";
+            }
+
+            if (iName.Length == 0)
+            {
+                Error = Error + "The Item Name may not be blank: ";
+            }
+
+            if (iName.Length > 50)
+            {
+                Error = Error + "The Item Name must be less than 50: ";
+            }
+
+            try
+            {
+                if (Convert.ToInt32(iQuantity) == 0)
+                {
+                    Error = Error + "The Item Quantity must not be blank: ";
+                }
+
+                if (Convert.ToInt32(iQuantity) > 100)
+                {
+                    Error = Error + "The Item Quantity must be less than 100: ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "Please enter a numerical value: ";
+            }
+            return Error;
+        }
     }
 }
