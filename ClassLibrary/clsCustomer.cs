@@ -25,14 +25,14 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string cDOB, string cName, string cEmail, string cBillingAddress, string cPass)
+        public string Valid(string cName, string cDOB, string cEmail, string cBillingAddress, string cPass)
         {
             String Error = "";
             DateTime DateTemp;
 
             if (cName.Length == 0)
             {
-                Error = Error + "The name may not be blank : ";
+                Error = Error + "The name must not be blank : ";
             }
             if (cName.Length > 50)
             {
@@ -41,7 +41,7 @@ namespace ClassLibrary
            
             if (cEmail.Length == 0)
             {
-                Error = Error + "The email may not be blank : ";
+                Error = Error + "The email must not be blank : ";
             }
             if (cEmail.Length > 50)
             {
@@ -51,7 +51,7 @@ namespace ClassLibrary
 
             if (cPass.Length == 0)
             {
-                Error = Error + "The password may not be blank : ";
+                Error = Error + "The password must not be blank : ";
             }
             if (cPass.Length > 60)
             {
@@ -61,7 +61,7 @@ namespace ClassLibrary
 
             if (cBillingAddress.Length == 0)
             {
-                Error = Error + "The billing address may not be blank : ";
+                Error = Error + "The billing address must not be blank : ";
             }
             if (cBillingAddress.Length > 100)
             {
