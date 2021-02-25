@@ -23,7 +23,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string BillingAddress = txtCustomerAddress.Text;
         string Error = "";
 
-        Error = ACustomer.Valid(Name, DOB, Email, Password, BillingAddress);
+        Error = ACustomer.Valid(Name, DOB, Email, BillingAddress, Password);
 
         if( Error == "")
         {

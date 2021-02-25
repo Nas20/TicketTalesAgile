@@ -19,7 +19,7 @@ namespace Testing2
         {
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
 
@@ -29,7 +29,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CName = "";
-            Error= ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error= ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -38,7 +38,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CName = "N";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -47,7 +47,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CName = "Nn";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -57,7 +57,7 @@ namespace Testing2
             string Error = "";
             string CName = "";
             CName = CName.PadRight(49, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -67,7 +67,7 @@ namespace Testing2
             string Error = "";
             string CName = "";
             CName = CName.PadRight(50, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -77,7 +77,7 @@ namespace Testing2
             string Error = "";
             string CName = "";
             CName = CName.PadRight(25, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -87,7 +87,7 @@ namespace Testing2
             string Error = "";
             string CName = "";
             CName = CName.PadRight(51, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -97,7 +97,7 @@ namespace Testing2
             string Error = "";
             string CName = "";
             CName = CName.PadRight(500, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
        
@@ -110,7 +110,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -122,7 +122,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-1);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -133,7 +133,7 @@ namespace Testing2
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -145,7 +145,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -157,7 +157,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -168,7 +168,7 @@ namespace Testing2
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -180,7 +180,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-1);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -192,7 +192,7 @@ namespace Testing2
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string CDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -201,7 +201,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CDOB = "This is not a date!";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -210,7 +210,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CEmail = "";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -219,7 +219,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CEmail = "N";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
 
@@ -229,7 +229,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CEmail = "Nn";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -239,7 +239,7 @@ namespace Testing2
             string Error = "";
             string CEmail = "";
             CEmail = CEmail.PadRight(49, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -249,7 +249,7 @@ namespace Testing2
             string Error = "";
             string CEmail = "";
             CEmail = CEmail.PadRight(50, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -259,7 +259,7 @@ namespace Testing2
             string Error = "";
             string CEmail = "";
             CEmail = CEmail.PadRight(25, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -269,7 +269,7 @@ namespace Testing2
             string Error = "";
             string CEmail = "";
             CEmail = CEmail.PadRight(51, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
        
@@ -279,7 +279,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CPass = "";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -288,7 +288,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CPass = "N";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
 
@@ -298,7 +298,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CPass = "Nn";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -308,7 +308,7 @@ namespace Testing2
             string Error = "";
             string CPass = "";
             CPass = CPass.PadRight(59, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -318,7 +318,7 @@ namespace Testing2
             string Error = "";
             string CPass = "";
             CPass = CPass.PadRight(60, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -328,7 +328,7 @@ namespace Testing2
             string Error = "";
             string CPass = "";
             CPass = CPass.PadRight(30, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -338,7 +338,7 @@ namespace Testing2
             string Error = "";
             string CPass = "";
             CPass = CPass.PadRight(61, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
        
@@ -348,7 +348,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CBillingAddress = "N";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
 
@@ -358,7 +358,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CBillingAddress = "Nn";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -367,7 +367,7 @@ namespace Testing2
             clsCustomer ACustomer = new clsCustomer();
             string Error = "";
             string CBillingAddress = "";
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -377,7 +377,7 @@ namespace Testing2
             string Error = "";
             string CBillingAddress = "";
             CBillingAddress = CBillingAddress.PadRight(99, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -387,7 +387,7 @@ namespace Testing2
             string Error = "";
             string CBillingAddress = "";
             CBillingAddress = CBillingAddress.PadRight(100, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -397,7 +397,7 @@ namespace Testing2
             string Error = "";
             string CBillingAddress = "";
             CBillingAddress = CBillingAddress.PadRight(50, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -407,7 +407,7 @@ namespace Testing2
             string Error = "";
             string CBillingAddress = "";
             CBillingAddress = CBillingAddress.PadRight(101, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -417,7 +417,7 @@ namespace Testing2
             string Error = "";
             string CEmail = "";
             CEmail = CEmail.PadRight(500, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -427,7 +427,7 @@ namespace Testing2
             string Error = "";
             string CPass = "";
             CPass = CPass.PadRight(500, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -437,7 +437,7 @@ namespace Testing2
             string Error = "";
             string CBillingAddress = "";
             CBillingAddress = CBillingAddress.PadRight(500, 'n');
-            Error = ACustomer.Valid(CDOB, CName, CEmail, CBillingAddress, CPass);
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
         }
 
