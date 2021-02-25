@@ -101,30 +101,27 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(int id)
+        public bool Find(int Id)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Id", id);
-            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            DB.AddParameter("@Id", Id);
+            DB.Execute("sproc_tblStaff_FilterById");
             if(DB.Count == 1)
             {
-                mId = Convert.ToInt32(DB.DataTable.Rows[0]["21"]);
-                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["19/04/1996"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Test Email"]);
-                mName = Convert.ToString(DB.DataTable.Rows[0]["Test Name"]);
-                mPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["112"]);
+                mId = Convert.ToInt32(DB.DataTable.Rows[0]["Id"]);
+                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mPhoneNumber = Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNumber"]);
                 mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
-                mRoles = Convert.ToString(DB.DataTable.Rows[0]["Test Roles"]);
+                mRoles = Convert.ToString(DB.DataTable.Rows[0]["Roles"]);
                 return true;       
             }
-
             else
             {
                 return false;
             }
         }
-  
-
         //public string StaffId { get; set; }
         //public string StaffName { get; set; }
     }
