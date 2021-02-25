@@ -34,6 +34,7 @@ namespace Testing4
             }
 
         }
+
         public DateTime DateDispatch {
             get
             {
@@ -111,6 +112,72 @@ namespace Testing4
             {
                 return false;
             }
+        }
+
+        public string Valid(string cID, string cADDRESS, string iTEMNAME, string iTEMQUANTITY, string dATEDISPATCH)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (cID.Length == 0)
+            {
+                Error = Error + "The Id may not be blank: ";
+            }
+
+            if (cADDRESS.Length == 0)
+            {
+                Error = Error + "The Address may not be blank: ";
+            }
+
+            if (cADDRESS.Length > 100)
+            {
+                Error = Error + "The Address must be less than 100 characters: ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dATEDISPATCH);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date is an invalid date: ";
+            }
+
+            if (iTEMNAME.Length == 0)
+            {
+                Error = Error + "The Item Name may not be blank: ";
+            }
+
+            if (iTEMNAME.Length > 50)
+            {
+                Error = Error + "The Item Name must be less than 50: ";
+            }
+
+            try
+            {
+                if (Convert.ToInt32(iTEMQUANTITY) == 0)
+                {
+                    Error = Error + "The Item Quantity must not be blank: ";
+                }
+
+                if (Convert.ToInt32(iTEMQUANTITY) > 100)
+                {
+                    Error = Error + "The Item Quantity must be less than 100: ";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "Please enter a numerical value: ";
+            }
+            return Error;
         }
     }
 }
