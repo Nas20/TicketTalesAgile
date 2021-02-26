@@ -70,13 +70,13 @@ namespace ClassLibrary
             try
             {
                 DateTemp = Convert.ToDateTime(cDOB);
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date.AddYears(-100))
                 {
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "Don't qualify, too old : ";
                 }
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Now.Date.AddYears(-18))
                 {
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "Don't qualify, too young : ";
                 }
 
             }

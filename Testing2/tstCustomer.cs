@@ -12,7 +12,7 @@ namespace Testing2
         string CBillingAddress = "A Address LE567B";
         string CPass = "Hnahsn34";
         string CEmail = "name @ hotmail.com";
-        string CDOB = DateTime.Now.Date.ToString();
+        string CDOB = DateTime.Now.Date.AddYears(-18).ToString();
 
         [TestMethod]
         public void ValidMethodOK()
@@ -108,7 +108,6 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-100);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
@@ -120,10 +119,22 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-1);
+            TestDate = TestDate.AddYears(-17);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDateOfBirthMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-68);
+            string CDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDateOfBirthMin()
@@ -132,6 +143,7 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-18);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
@@ -143,10 +155,10 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(1);
+            TestDate = TestDate.AddYears(-19);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDateOfBirthMaxPlusOne()
@@ -155,7 +167,7 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(1);
+            TestDate = TestDate.AddYears(-101);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
@@ -167,10 +179,12 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreEqual(Error, "");
         }
+
         [TestMethod]
         public void CustomerDateOfBirthMaxLessOne()
         {
@@ -178,10 +192,10 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-1);
+            TestDate = TestDate.AddYears(-99);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDateOfBirthExtremeMax()
@@ -190,7 +204,7 @@ namespace Testing2
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(100);
+            TestDate = TestDate.AddYears(-1000);
             string CDOB = TestDate.ToString();
             Error = ACustomer.Valid(CName, CDOB, CEmail, CBillingAddress, CPass);
             Assert.AreNotEqual(Error, "");
