@@ -42,11 +42,14 @@
             <br />
             <asp:Label ID="lblError" runat="server"></asp:Label>
             <br />
+            <asp:Button ID="BtnFind" runat="server" OnClick="BtnFind_Click" Text="FIND" Width="103px" />
             <br />
             <asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="CONFIRM" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnCancel" runat="server" Text="CANCEL" />
         </div>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

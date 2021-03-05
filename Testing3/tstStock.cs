@@ -67,7 +67,10 @@ namespace Testing3
             AStock.DatePurchased = TestData;
             Assert.AreEqual(AStock.DatePurchased, TestData);
         }
+
+
         /**
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -85,8 +88,8 @@ namespace Testing3
             Boolean Found = false;
             Boolean OK = true;
             Int32 Id = 1;
-            Found = AStock.Find(Id);
-            if (AStock.StockId !=1)
+            Found = AStock.Find(StockId);
+            if (AStock.StockId != 1)
             {
                 OK = false;
             }
@@ -161,13 +164,12 @@ namespace Testing3
             Boolean OK = true;
             Int32 StockId = 1;
             Found = AStock.Find(StockId);
-            if (AStock.DatePurchased != Convert.ToDateTime ("07/01/2021")) 
+            if (AStock.DatePurchased != Convert.ToDateTime("07/01/2021"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
-    }
-    **/
+    */
     }
 }

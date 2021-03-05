@@ -27,4 +27,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Response.Write(AStock.Price);
         //Response.Redirect("Stockviewer.aspx");
     }
+
+    protected void BtnFind_Click(object sender, EventArgs e)
+    {
+        clsStock AStock = new clsStock();
+        Int32 StockId;
+        Boolean Found = false;
+        StockId = Convert.ToInt32(txtStockId.Text);
+        //Found = AStock.Find(StockId);
+        if(Found == true)
+        {
+            txtItemName.Text = AStock.ItemName;
+            txtQuantity.Text = AStock.ToString();
+            txtPrice.Text = AStock.Price.ToString();
+            txtDatePurchased.Text = AStock.DatePurchased.ToString();
+        }
+    }
 }
