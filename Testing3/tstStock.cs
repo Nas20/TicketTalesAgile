@@ -7,6 +7,16 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
+
+        string StockId = "1";
+        string ItemName = "TennisMatch";
+        string Quantity = "150";
+        string Price = "12";
+        string StockAvailable = "True";
+        string DatePurchased = DateTime.Now.Date.ToString();
+        //" 07/01/2021";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -87,7 +97,7 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Id = 1;
+            Int32 StockId = 1;
             Found = AStock.Find(StockId);
             if (AStock.StockId != 1)
             {
@@ -170,6 +180,30 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
-    */
+        
+        *
+        */
+
+        /**
+         * 
+         */
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIdMinLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
     }
 }

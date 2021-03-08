@@ -105,5 +105,15 @@ namespace ClassLibrary
             }
            
         }
+
+        /**
+         * 
+         * 
+         */
+
+        public string Valid(string StockId, string ItemName, string Quantity, string Price, string StockAvailable,  string DatePurchased)
+        {
+            return "";
+        }
     }
 }
