@@ -8,6 +8,7 @@ namespace Testing2
     public class tstCustomer
     {
 
+
         string CName = "A Name";
         string CBillingAddress = "A Address LE567B";
         string CPass = "Hnahsn34";
