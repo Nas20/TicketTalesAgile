@@ -129,7 +129,7 @@ namespace tstStaff.cs
         {
             clsStaff AStaff = new clsStaff();
             Boolean Found = false;
-            Boolean OK = true;
+            Boolean OK = true; 
             Int32 Id = 2;
             Found = AStaff.Find(Id);
             if (AStaff.Email != ("oskar@gmail.com"))
@@ -138,6 +138,7 @@ namespace tstStaff.cs
             }
             Assert.IsTrue(OK);
         }
+
 
         [TestMethod]
         public void TestStaffPhoneNumberFound()
