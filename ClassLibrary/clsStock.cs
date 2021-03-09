@@ -10,7 +10,7 @@ namespace ClassLibrary
         private Decimal mPrice;
         private Boolean mStockAvailable;
         private DateTime mDatePurchased;
-        
+
 
         public Int32 StockId
         {
@@ -53,7 +53,7 @@ namespace ClassLibrary
             }
             set
             {
-                mPrice = Convert.ToDecimal (value);
+                mPrice = Convert.ToDecimal(value);
             }
         }
         public bool StockAvailable
@@ -103,17 +103,45 @@ namespace ClassLibrary
             {
                 return false;
             }
-           
+
         }
 
         /**
          * 
-         * 
+         * WK21
          */
 
-        public string Valid(string StockId, string ItemName, string Quantity, string Price, string StockAvailable,  string DatePurchased)
+        public string Valid(string StockId, string ItemName, string Quantity, string Price, string StockAvailable, string DatePurchased)
         {
-            return "";
+            String Error = "";
+
+            DateTime DateTemp;
+
+            if (StockId.Length == 0)
+            {
+                Error = Error + "The Stock Id may not be blank :";
+            }
+            if (StockId.Length > 6)
+            {
+                Error = Error + "The Stock Id must be less that 6 Characters :";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(DatePurchased);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past :";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date";
+            }
+                return Error;
+            }
         }
     }
-}

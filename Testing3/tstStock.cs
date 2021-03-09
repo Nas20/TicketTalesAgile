@@ -205,5 +205,152 @@ namespace Testing3
             Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void StockIdMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "a";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "aa";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIdMaxLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "aaaaa";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIdMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "aaaaaa";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIdMid()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "aaa";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        /**
+
+        [TestMethod]
+        public void StockIdExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string StockId = "";
+            StockId = StockId.PadRight(500, 'a');
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        //ItemName
+        
+        //Quantity
+
+        //Price
+
+        //StockAvailable
+
+
+        [TestMethod]
+        public void DatePurchasedExtremeMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DatePurchased = TestDate.ToString();
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DatePurchasedMinLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DatePurchased = TestDate.ToString();
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DatePurchasedMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DatePurchased = TestDate.ToString();
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DatePurchasedMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DatePurchased = TestDate.ToString();
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DatePurchasedExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DatePurchased = TestDate.ToString();
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DatePurchasedInvalidData()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string DatePurchased = "This is not a date!";
+            Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
+            Assert.AreEqual(Error, "");
+        }
+    */
     }
 }
