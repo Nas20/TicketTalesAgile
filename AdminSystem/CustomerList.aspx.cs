@@ -21,8 +21,8 @@ public partial class _Default : System.Web.UI.Page
     {
         clsCustomerCollection Customers = new clsCustomerCollection();
         lstCustomerList.DataSource = Customers.CustomerList;
-        lstCustomerList.DataValueField = "CustomerId";
-        lstCustomerList.DataTextField = "CustomerName";
+        lstCustomerList.DataValueField = "Id";
+        lstCustomerList.DataTextField = "Name";
         lstCustomerList.DataBind();
     }
 }
