@@ -23,7 +23,7 @@ namespace Testing2
             clsCustomer TestItem = new clsCustomer();
             TestItem.Active = true;
             TestItem.BillingAddress = "Some billing address LE33DA";
-            TestItem.DateOfBirth = DateTime.Now.Date;
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(-18);
             TestItem.Email = "some email @ hmail.com";
             TestItem.Id = 1;
             TestItem.Name = "Some name";
@@ -42,7 +42,7 @@ namespace Testing2
             clsCustomer TestItem = new clsCustomer();
             TestItem.Active = true;
             TestItem.BillingAddress = "Some billing address LE33DA";
-            TestItem.DateOfBirth = DateTime.Now.Date;
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(-18);
             TestItem.Email = "Some email @ hmail.com";
             TestItem.Id = 1;
             TestItem.Name = "Some name";
@@ -61,7 +61,7 @@ namespace Testing2
             clsCustomer TestCustomer = new clsCustomer();
             TestCustomer.Active = true;
             TestCustomer.BillingAddress = "Some billing address LE33DA";
-            TestCustomer.DateOfBirth = DateTime.Now.Date;
+            TestCustomer.DateOfBirth = DateTime.Now.Date.AddYears(-18);
             TestCustomer.Email = "some email @ hmail.com";
             TestCustomer.Id = 1;
             TestCustomer.Name = "Some name";
