@@ -45,7 +45,7 @@ namespace ClassLibrary
                 mQuantity = value;
             }
         }
-        public object Price
+        public Decimal Price
         {
             get
             {
@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
         }
 
-        public object Find(int StockId)
+        public Boolean Find(int StockId)
         {
             //create an instance of data connection
             //add the parameter for the stock id to match
@@ -93,7 +93,7 @@ namespace ClassLibrary
                 mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
                 mItemName = Convert.ToString(DB.DataTable.Rows[0]["ItemName"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["StockPrice"]);
                 mStockAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["StockAvailable"]);
                 mDatePurchased = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
                 //always return true

@@ -79,7 +79,7 @@ namespace Testing3
         }
 
 
-        /**
+       
 
         [TestMethod]
         public void FindMethodOK()
@@ -180,9 +180,8 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
-        
-        *
-        */
+
+
 
         /**
          * 
@@ -256,8 +255,8 @@ namespace Testing3
             Assert.AreEqual(Error, "");
         }
 
+        
         /**
-
         [TestMethod]
         public void StockIdExtremeMax()
         {
@@ -266,7 +265,7 @@ namespace Testing3
             string StockId = "";
             StockId = StockId.PadRight(500, 'a');
             Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual(Error,"");
         }
 
         //ItemName
@@ -277,6 +276,7 @@ namespace Testing3
 
         //StockAvailable
 
+        
 
         [TestMethod]
         public void DatePurchasedExtremeMin()
