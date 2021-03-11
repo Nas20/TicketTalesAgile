@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //AStock.Id = txtStockId.Text;
         AStock.ItemName = txtItemName.Text;
         //AStock.Quantity = txtQuantity.Text;
-        AStock.Price = txtPrice.Text;
+        AStock.Price =Convert.ToDecimal( txtPrice.Text);
         Session["AStock"] = AStock;
         Response.Write(AStock.ItemName);
         Response.Redirect("StockViewer.aspx");
@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 StockId;
         Boolean Found = false;
         StockId = Convert.ToInt32(txtStockId.Text);
-        //Found = AStock.Find(StockId);
+        Found = AStock.Find(StockId);
         if(Found == true)
         {
             txtItemName.Text = AStock.ItemName;
