@@ -22,7 +22,8 @@ namespace Testing4
                 mOrderId = value;
             }
         }
-        public string Address {
+        public string Address
+        {
             get
             {
                 return mAddress;
@@ -33,7 +34,8 @@ namespace Testing4
             }
 
         }
-        public DateTime DateDispatch {
+        public DateTime DateDispatch
+        {
             get
             {
                 return mDateDispatch;
@@ -65,7 +67,7 @@ namespace Testing4
                 mItemQuantity = value;
             }
         }
-        public bool Dispatched { get; internal set; }
+        //public bool Dispatched { get; internal set; }
         public bool Made
         {
             get
@@ -77,7 +79,8 @@ namespace Testing4
                 mMade = value;
             }
         }
-        public int CustomerId {
+        public int CustomerId
+        {
             get
             {
                 return mCustomerId;
@@ -94,7 +97,7 @@ namespace Testing4
             DB.AddParameter("@OrderId", OrderId);
             DB.Execute("sproc_tblOrder_FilterByOrderId");
             if (DB.Count == 1)
-            { 
+            {
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
