@@ -256,7 +256,7 @@ namespace Testing3
         }
 
         
-        /**
+        
         [TestMethod]
         public void StockIdExtremeMax()
         {
@@ -351,6 +351,5 @@ namespace Testing3
             Error = AStock.Valid(StockId, ItemName, Quantity, Price, StockAvailable, DatePurchased);
             Assert.AreEqual(Error, "");
         }
-    */
     }
 }
