@@ -114,7 +114,6 @@ namespace ClassLibrary
         public string Valid(string StockId, string ItemName, string Quantity, string Price, string StockAvailable, string DatePurchased)
         {
             String Error = "";
-
             DateTime DateTemp;
 
             if (StockId.Length == 0)
@@ -125,6 +124,43 @@ namespace ClassLibrary
             {
                 Error = Error + "The Stock Id must be less that 6 Characters :";
             }
+
+            if (ItemName.Length == 0)
+            {
+                Error = Error + "The Item Name must not be blank : ";
+            }
+            if (ItemName.Length > 50)
+            {
+                Error = Error + "The Item Name must be less than 50 Characters : ";
+            }
+
+            if (Quantity.Length == 0)
+            {
+                Error = Error + "The Quantity must not be blank : ";
+            }
+            if (Quantity.Length > 10)
+            {
+                Error = Error + "The Quantity must be less than 10 Characters : ";
+            }
+
+            if (Price.Length == 0)
+            {
+                Error = Error + "The Price must not be blank : ";
+            }
+            if (Price.Length > 10)
+            {
+                Error = Error + "The Price must be less than 10 Characters : ";
+            }
+
+            if (StockAvailable.Length == 0)
+            {
+                Error = Error + "The Stock Available must not be blank : ";
+            }
+            if (StockAvailable.Length > 500)
+            {
+                Error = Error + "The Stock Available must be less than 500 Characters : ";
+            }
+
             try
             {
                 DateTemp = Convert.ToDateTime(DatePurchased);

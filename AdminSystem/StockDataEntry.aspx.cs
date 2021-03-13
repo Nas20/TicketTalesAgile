@@ -16,16 +16,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnConfirm_Click(object sender, EventArgs e)
     {
         clsStock AStock = new clsStock();
-        //AStock.Id = txtStockId.Text;
-        AStock.ItemName = txtItemName.Text;
-        //AStock.Quantity = txtQuantity.Text;
-        AStock.Price =Convert.ToDecimal( txtPrice.Text);
-        Session["AStock"] = AStock;
-        Response.Write(AStock.ItemName);
-        Response.Redirect("StockViewer.aspx");
-        //Response.Write(AStock.ItemName);
-        //Response.Write(AStock.Price);
-        //Response.Redirect("Stockviewer.aspx");
+
+        string StockId = txtStockId.Text;
+        string ItemName = txtItemName.Text;
+        string Quantity = txtQuantity.Text;
+        string Price = txtPrice.Text;
+        string DatePurchased = txtDatePurchased.Text;
+        string Error = "";
+        //Error = AStock.Valid(StockId, ItemName, Quantity, Price, DatePurchased);
+        if (Error == "");
+        {
+            //AStock.Id = txtStockId.Text;
+            AStock.ItemName = txtItemName.Text;
+            //AStock.Quantity = txtQuantity.Text;
+            AStock.Price = Convert.ToDecimal(txtPrice.Text);
+            Session["AStock"] = AStock;
+            Response.Write(AStock.ItemName);
+            Response.Redirect("StockViewer.aspx");
+            //Response.Write(AStock.ItemName);
+            //Response.Write(AStock.Price);
+            //Response.Redirect("Stockviewer.aspx");
+        }
     }
 
     protected void BtnFind_Click(object sender, EventArgs e)
