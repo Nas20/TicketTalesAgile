@@ -22,8 +22,8 @@ namespace Testing4
                 mOrderId = value;
             }
         }
-
-        public string Address {
+        public string Address
+        {
             get
             {
                 return mAddress;
@@ -34,8 +34,8 @@ namespace Testing4
             }
 
         }
-
-        public DateTime DateDispatch {
+        public DateTime DateDispatch
+        {
             get
             {
                 return mDateDispatch;
@@ -67,7 +67,7 @@ namespace Testing4
                 mItemQuantity = value;
             }
         }
-
+        //public bool Dispatched { get; internal set; }
         public bool Made
         {
             get
@@ -79,7 +79,8 @@ namespace Testing4
                 mMade = value;
             }
         }
-        public int CustomerId {
+        public int CustomerId
+        {
             get
             {
                 return mCustomerId;
@@ -90,15 +91,13 @@ namespace Testing4
             }
         }
 
-
-
         public bool Find(int OrderId)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderId", OrderId);
             DB.Execute("sproc_tblOrder_FilterByOrderId");
             if (DB.Count == 1)
-            { 
+            {
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
@@ -114,27 +113,27 @@ namespace Testing4
             }
         }
 
-        public string Valid(string cID, string cADDRESS, string iTEMNAME, string iTEMQUANTITY, string dATEDISPATCH)
+        public string Valid(string cId, string cAddress, string dDispatch, string iName, string iQuantity)
         {
             String Error = "";
             DateTime DateTemp;
-            if (cID.Length == 0)
+            if (cId.Length == 0)
             {
                 Error = Error + "The Id may not be blank: ";
             }
 
-            if (cADDRESS.Length == 0)
+            if (cAddress.Length == 0)
             {
                 Error = Error + "The Address may not be blank: ";
             }
 
-            if (cADDRESS.Length > 100)
+            if (cAddress.Length > 100)
             {
                 Error = Error + "The Address must be less than 100 characters: ";
             }
             try
             {
-                DateTemp = Convert.ToDateTime(dATEDISPATCH);
+                DateTemp = Convert.ToDateTime(dDispatch);
                 if (DateTemp < DateTime.Now.Date)
                 {
                     Error = Error + "The date cannot be in the past: ";
@@ -150,24 +149,24 @@ namespace Testing4
                 Error = Error + "The date is an invalid date: ";
             }
 
-            if (iTEMNAME.Length == 0)
+            if (iName.Length == 0)
             {
                 Error = Error + "The Item Name may not be blank: ";
             }
 
-            if (iTEMNAME.Length > 50)
+            if (iName.Length > 50)
             {
                 Error = Error + "The Item Name must be less than 50: ";
             }
 
             try
             {
-                if (Convert.ToInt32(iTEMQUANTITY) == 0)
+                if (Convert.ToInt32(iQuantity) == 0)
                 {
                     Error = Error + "The Item Quantity must not be blank: ";
                 }
 
-                if (Convert.ToInt32(iTEMQUANTITY) > 100)
+                if (Convert.ToInt32(iQuantity) > 100)
                 {
                     Error = Error + "The Item Quantity must be less than 100: ";
                 }
