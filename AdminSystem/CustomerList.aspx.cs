@@ -25,4 +25,28 @@ public partial class _Default : System.Web.UI.Page
         lstCustomerList.DataTextField = "Name";
         lstCustomerList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["CustomerId"] = -1;
+        Response.Redirect("CustomerDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 CustomerId;
+        if(lstCustomerList.SelectedIndex != -1)
+        {
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["CustomerId"] = CustomerId;
+            Response.Redirect("ACustomer.aspx");
+
+
+        }
+
+        else
+        {
+            lblError.Text = "Please select a record to delete";
+        }
+    }
 }

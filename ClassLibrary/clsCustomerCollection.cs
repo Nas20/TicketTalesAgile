@@ -6,6 +6,7 @@ namespace ClassLibrary
     public class clsCustomerCollection
     {
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
 
         public List<clsCustomer> CustomerList
         {
@@ -52,15 +53,52 @@ namespace ClassLibrary
                 Index++;
 
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName", mThisCustomer.Name);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
+            DB.AddParameter("@CustomerPass", mThisCustomer.Pass);
+            DB.AddParameter("@CustomerBillingAddress", mThisCustomer.BillingAddress);
+            DB.AddParameter("@CustomerDateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@CustomerActive", mThisCustomer.Active);
+
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
             }
 
-           
 
-        public clsCustomer ThisCustomer { get; set; }
+            set
+            {
+                mThisCustomer = value;
+            }
+
+
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerId", mThisCustomer.Id);
+            DB.AddParameter("@CustomerName", mThisCustomer.Name);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
+            DB.AddParameter("@CustomerPass", mThisCustomer.Pass);
+            DB.AddParameter("@CustomerBillingAddress", mThisCustomer.BillingAddress);
+            DB.AddParameter("@CustomerDateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@CustomerActive", mThisCustomer.Active);
+
+            DB.Execute("sproc_tblCustomer_Update");
+        }
     }
-
-    
-
-    }
+}
 
 
