@@ -39,7 +39,7 @@ public partial class _Default : System.Web.UI.Page
         {
             CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
             Session["CustomerId"] = CustomerId;
-            Response.Redirect("ACustomer.aspx");
+            Response.Redirect("CustomerDataEntry.aspx");
 
 
         }
