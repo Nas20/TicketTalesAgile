@@ -25,6 +25,56 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void AddMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.BillingAddress = "A Addresss LE33BA";
+            TestItem.DateOfBirth = DateTime.Now.AddYears(-18);
+            TestItem.Email = "A email @ hmail.com";
+            TestItem.Id = 1;
+            TestItem.Name = "A Name";
+            TestItem.Pass = "A Pasword";
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.Id = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.BillingAddress = "A Addresss LE33BA";
+            TestItem.DateOfBirth = DateTime.Now.AddYears(-18);
+            TestItem.Email = "A email @ hmail.com";
+            TestItem.Name = "A Name";
+            TestItem.Pass = "A Pasword";
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.Id = PrimaryKey;
+
+            TestItem.Active = false;
+            TestItem.BillingAddress = "Another Addresss LE23BA";
+            TestItem.DateOfBirth = DateTime.Now.AddYears(-18);
+            TestItem.Email = "Another email @ hmail.com";
+            TestItem.Name = "Another Name";
+            TestItem.Pass = "Anothe Pasword";
+            AllCustomers.ThisCustomer = TestItem;
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
+
+        [TestMethod]
         public void CustomerNameMinLessOne()
         {
             clsCustomer ACustomer = new clsCustomer();
