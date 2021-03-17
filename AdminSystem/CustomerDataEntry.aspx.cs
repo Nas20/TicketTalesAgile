@@ -13,7 +13,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         CustomerId = Convert.ToInt32(Session["CustomerId"]);
-        if( IsPostBack == true)
+        if( IsPostBack == false)
         {
 
             if(CustomerId != -1)
