@@ -8,6 +8,14 @@ namespace Testing4
     [TestClass]
     public class tstOrderCollection
     {
+        
+        [TestMethod]
+        public void InstanceOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            Assert.IsNotNull(AllOrders);
+        }
+
         [TestMethod]
         public void AddOK()
         {
@@ -26,13 +34,6 @@ namespace Testing4
             TestItem.OrderId = PrimaryKey;
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
-        }
-
-        [TestMethod]
-        public void InstanceOK()
-        {
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            Assert.IsNotNull(AllOrders);
         }
 
         [TestMethod]

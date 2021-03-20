@@ -9,7 +9,7 @@ namespace Testing4
     public class TstOrder
     {
         //good test data
-        string CId = "13";
+        string CId = "3";
         string CAddress = "3 Bobby Avenue";
         string IName = "Some Movie";
         string IQuantity = "12";
@@ -213,7 +213,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CIDMinLessOne()
+        public void CIdLessThanOne()
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
@@ -223,20 +223,11 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CIDMin()
+        public void CIdMin()
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
             string CId = "1";
-            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
-        public void CIDMinPlusOne()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            string CId = "12";
             Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
             Assert.AreEqual(Error, "");
         }
