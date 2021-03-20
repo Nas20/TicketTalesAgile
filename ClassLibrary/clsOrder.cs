@@ -117,11 +117,11 @@ namespace Testing4
         {
             String Error = "";
             DateTime DateTemp;
+
             if (cId.Length == 0)
             {
                 Error = Error + "The Id may not be blank: ";
             }
-
             if (cAddress.Length == 0)
             {
                 Error = Error + "The Address may not be blank: ";
