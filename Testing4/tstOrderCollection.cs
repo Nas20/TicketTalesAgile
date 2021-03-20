@@ -9,6 +9,26 @@ namespace Testing4
     public class tstOrderCollection
     {
         [TestMethod]
+        public void AddOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.Address = "some address";
+            TestItem.CustomerId = 1;
+            TestItem.DateDispatch = DateTime.Now.Date;
+            TestItem.ItemName = "some name";
+            TestItem.ItemQuantity = 4;
+            TestItem.OrderId = 3;
+            TestItem.Made = true;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderId = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+
+        [TestMethod]
         public void InstanceOK()
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
