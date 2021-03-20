@@ -17,14 +17,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        string CID = txtCustomerId.Text;
-        string CADDRESS = txtCustomerAddress.Text;
-        string ITEMNAME = txtItemName.Text;
-        string DATEDISPATCH = txtDispatchDate.Text;
-        string ITEMQUANTITY = txtItemQuantity.Text;
+        string cID = txtCustomerId.Text;
+        string cAddress = txtCustomerAddress.Text;
+        string itemName= txtItemName.Text;
+        string dateDispatch = txtDispatchDate.Text;
+        string itemQuantity = txtItemQuantity.Text;
         string Error = "";
 
-        Error = AnOrder.Valid(CID, CADDRESS, ITEMNAME, ITEMQUANTITY, DATEDISPATCH);
+        Error = AnOrder.Valid(cID, cAddress, itemName, itemQuantity, dateDispatch);
         if (Error == "")
         {
             AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
@@ -32,7 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.Address = txtCustomerAddress.Text;
             AnOrder.ItemName = txtItemName.Text;
             AnOrder.ItemQuantity = Convert.ToInt32(txtItemQuantity.Text);
-            AnOrder.DateDispatch = Convert.ToDateTime(DATEDISPATCH);
+            AnOrder.DateDispatch = Convert.ToDateTime(dateDispatch);
             Session["AnOrder"] = AnOrder;
             Response.Redirect("OrderViewer.aspx");
         }
