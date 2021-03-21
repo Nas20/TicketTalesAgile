@@ -57,13 +57,16 @@ namespace ClassLibrary
 
         public int Add()
         {
+            //add new record and connect to database
             clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
             DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
             DB.AddParameter("@CustomerAddress", mThisOrder.Address);
             DB.AddParameter("@DateOfOrderDispatch", mThisOrder.DateDispatch);
             DB.AddParameter("@ItemName", mThisOrder.ItemName);
             DB.AddParameter("@ItemQuantity", mThisOrder.ItemQuantity);
             DB.AddParameter("@OrderMade", mThisOrder.Made);
+            //execute the query
             return DB.Execute("sproc_tblOrder_Insert");
         }
 

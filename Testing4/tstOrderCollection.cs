@@ -19,9 +19,13 @@ namespace Testing4
         [TestMethod]
         public void AddOK()
         {
+            //create an instance of the class
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //create some test data for the class
             clsOrder TestItem = new clsOrder();
+            //create var to store the property
             Int32 PrimaryKey = 0;
+            //set the properties
             TestItem.Address = "some address";
             TestItem.CustomerId = 1;
             TestItem.DateDispatch = DateTime.Now.Date;
@@ -29,10 +33,15 @@ namespace Testing4
             TestItem.ItemQuantity = 4;
             TestItem.OrderId = 3;
             TestItem.Made = true;
+            //set the test data properties to the ThisOrder
             AllOrders.ThisOrder = TestItem;
+            //add the record
             PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
             TestItem.OrderId = PrimaryKey;
+            //find the record
             AllOrders.ThisOrder.Find(PrimaryKey);
+            //check to see if both are the same
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 

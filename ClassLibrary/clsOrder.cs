@@ -91,28 +91,6 @@ namespace Testing4
             }
         }
 
-        public bool Find(int OrderId)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderId", OrderId);
-            DB.Execute("sproc_tblOrder_FilterByOrderId");
-            if (DB.Count == 1)
-            {
-                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
-                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
-                mAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
-                mDateDispatch = Convert.ToDateTime(DB.DataTable.Rows[0]["DateofOrderDispatch"]);
-                mItemName = Convert.ToString(DB.DataTable.Rows[0]["ItemName"]);
-                mItemQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ItemQuantity"]);
-                mMade = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderMade"]);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public string Valid(string cId, string cAddress, string dDispatch, string iName, string iQuantity)
         {
             String Error = "";
@@ -147,6 +125,7 @@ namespace Testing4
             catch
             {
                 Error = Error + "The date is an invalid date: ";
+
             }
 
             if (iName.Length == 0)
@@ -177,6 +156,27 @@ namespace Testing4
                 Error = Error + "Please enter a numerical value: ";
             }
             return Error;
+        }
+        public bool Find(int OrderId)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", OrderId);
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            if (DB.Count == 1)
+            {
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mDateDispatch = Convert.ToDateTime(DB.DataTable.Rows[0]["DateofOrderDispatch"]);
+                mItemName = Convert.ToString(DB.DataTable.Rows[0]["ItemName"]);
+                mItemQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ItemQuantity"]);
+                mMade = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderMade"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

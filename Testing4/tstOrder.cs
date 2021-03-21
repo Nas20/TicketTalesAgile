@@ -344,6 +344,17 @@ namespace Testing4
         }
 
         [TestMethod]
+        public void dDispatchMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DDispatch = TestDate.ToString();
+            Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
         public void dDispatchExtremeMax()
         {
             clsOrder AnOrder = new clsOrder();
@@ -361,6 +372,10 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
+            string CId = "3";
+            string CAddress = "3 Bobby Avenue";
+            string IName = "Some Movie";
+            string IQuantity = "12";
             string DDispatch = "this is not a date!";
             Error = AnOrder.Valid(CId, CAddress, DDispatch, IName, IQuantity);
             Assert.AreNotEqual(Error, "");
