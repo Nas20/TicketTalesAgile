@@ -13,39 +13,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-
-    protected void btnOK_Click(object sender, EventArgs e)
-    {
-        clsOrder AnOrder = new clsOrder();
-        string cID = txtCustomerId.Text;
-        string cAddress = txtCustomerAddress.Text;
-        string itemName= txtItemName.Text;
-        string dateDispatch = txtDispatchDate.Text;
-        string itemQuantity = txtItemQuantity.Text;
-        string Error = "";
-
-        Error = AnOrder.Valid(cID, cAddress, itemName, itemQuantity, dateDispatch);
-        if (Error == "")
-        {
-            AnOrder.CustomerId = Convert.ToInt32(cID);
-            AnOrder.Address = cAddress;
-            AnOrder.ItemName = itemName;
-            AnOrder.ItemQuantity = Convert.ToInt32(itemQuantity);
-            AnOrder.DateDispatch = Convert.ToDateTime(dateDispatch);
-            AnOrder.Made = chkActive.Checked;
-            clsOrderCollection OrderList = new clsOrderCollection();
-            OrderList.ThisOrder = AnOrder;
-            OrderList.Add();
-            
-            Response.Redirect("OrderList.aspx");
-        }
-
-        else
-        {
-            lblError.Text = Error;
-        }
-    }
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
@@ -62,4 +29,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtItemQuantity.Text = AnOrder.ItemQuantity.ToString();
         }
     }
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+        string cID = txtCustomerId.Text;
+        string cAddress = txtCustomerAddress.Text;
+        string itemName= txtItemName.Text;
+        string dateDispatch = txtDispatchDate.Text;
+        string itemQuantity = txtItemQuantity.Text;
+        string Error = "";
+
+        Error = AnOrder.Valid(cID, cAddress, dateDispatch, itemName, itemQuantity);
+        if (Error == "")
+        {
+            AnOrder.CustomerId = Convert.ToInt32(cID);
+            AnOrder.Address = cAddress;
+            AnOrder.ItemName = itemName;
+            AnOrder.ItemQuantity = Convert.ToInt32(itemQuantity);
+            AnOrder.DateDispatch = Convert.ToDateTime(dateDispatch);
+            AnOrder.Made = chkActive.Checked;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            OrderList.ThisOrder = AnOrder;
+            OrderList.Add();
+            Response.Redirect("OrderList.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
+    }
+
+    
 }
