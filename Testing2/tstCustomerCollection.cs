@@ -9,6 +9,90 @@ namespace Testing2
     public class tstCustomerCollection
     {
         [TestMethod]
+        public void ReportByCustomerNameOK()
+        {
+        //create an instance of the class we want to create
+        clsCustomerCollection AllCustomers = new clsCustomerCollection();
+        //create an instance of the filtered data
+        clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+        //apply a blank string(should return all records)
+         FilteredCustomers.ReportByName("");
+         //test to see that the two values are the same
+         Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+
+        }
+        [TestMethod]
+        public void ReportByNameDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a name that doesnt exist
+            FilteredCustomers.ReportByName("xxxxxx xxxxx");
+            //check the correct number of records are found
+            if(FilteredCustomers.Count == 2)
+            {
+                //check that the first record is ID 30/33
+                if (FilteredCustomers.CustomerList[0].Id != 30)
+                 {
+                    OK = false;
+                }
+                //check that the first record is ID 33
+                if (FilteredCustomers.CustomerList[0].Id != 33)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            
+        }
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+        //create an instance of the filtered data
+       clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a name that doesnt exist
+            FilteredCustomers.ReportByName("xxxxxx xxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of the test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //sets its properties
+            TestItem.Active = true;
+            TestItem.BillingAddress = "A Addresss LE33BA";
+            TestItem.DateOfBirth = DateTime.Now.AddYears(-18);
+            TestItem.Email = "A email @ hmail.com";
+            TestItem.Id = 1;
+            TestItem.Name = "A Name";
+            TestItem.Pass = "A Pasword";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.Id = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //delete the record
+            AllCustomers.Delete();
+            //now find the record
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see of the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
         public void AddMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
