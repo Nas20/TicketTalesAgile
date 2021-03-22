@@ -70,6 +70,7 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblOrder_Insert");
         }
 
+
         public clsOrder ThisOrder
         {
             get
@@ -80,6 +81,22 @@ namespace ClassLibrary
             {
                 mThisOrder = value;
             }
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of ThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
+            DB.AddParameter("@CustomerAddress", mThisOrder.Address);
+            DB.AddParameter("@DateOfOrderDispatch", mThisOrder.DateDispatch);
+            DB.AddParameter("@ItemName", mThisOrder.ItemName);
+            DB.AddParameter("@ItemQuantity", mThisOrder.ItemQuantity);
+            DB.AddParameter("@OrderMade", mThisOrder.Made);
+            //execute the query
+            DB.Execute("sproc_tblOrder_update");
         }
     }
 }
