@@ -33,28 +33,36 @@ public partial class _Default : System.Web.UI.Page
         //bind the data to the list
         lstCustomerList.DataBind();
     }
-
+    //event handler for the add button
     protected void btnAdd_Click(object sender, EventArgs e)
     {
+        //store -1 into the session object to indicate this is a new record
         Session["CustomerId"] = -1;
+        //redirect to the data entry page
         Response.Redirect("CustomerDataEntry.aspx");
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
+        //var to store the primary key value of the record to be edited
         Int32 CustomerId;
+        //if a record has been selected from the list
         if(lstCustomerList.SelectedIndex != -1)
         {
+            //get the primary key value of the record to edit
             CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
             Session["CustomerId"] = CustomerId;
+            //redirect to the data entry page
             Response.Redirect("CustomerDataEntry.aspx");
 
 
         }
 
-        else
+        else //if no record has been selected
         {
-            lblError.Text = "Please select a record to delete";
+            //display an error
+            lblError.Text = "Please select a record to edit";
         }
     }
 
@@ -94,6 +102,8 @@ public partial class _Default : System.Web.UI.Page
         lstCustomerList.DataTextField = "Name";
         //bind the data to the list
         lstCustomerList.DataBind();
+
+        
     }
 
     protected void btnClear_Click(object sender, EventArgs e)
