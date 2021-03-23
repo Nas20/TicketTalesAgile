@@ -10,8 +10,11 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //create a new instance of clscustomer 
         clsCustomer ACustomer = new clsCustomer();
+        //store the data in the session object
         ACustomer = (clsCustomer)Session["ACustomer"];
+        //allows fields to be edited
         Response.Write(ACustomer.Id);
         Response.Write(ACustomer.Name);
         Response.Write(ACustomer.Email);

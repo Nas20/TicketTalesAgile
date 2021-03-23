@@ -5,29 +5,34 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
+        //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
         clsCustomer mThisCustomer = new clsCustomer();
-
+        //public property for the customer list
         public List<clsCustomer> CustomerList
         {
             get
             {
+                //return the private data
                 return mCustomerList;
             }
             set
             {
+                //set the private data 
                 mCustomerList = value;
             }
         }
+        //public property for the count
         public int Count
         {
             get
             {
+                //return the private data
                 return mCustomerList.Count;
             }
             set
             {
-
+                //we shall worry about this later
             }
         }
 
@@ -106,27 +111,32 @@ namespace ClassLibrary
 
         public int Add()
         {
+            //adds a new record to the database based on the value of ThisCustomer
+            //connect to the database
             clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
             DB.AddParameter("@CustomerName", mThisCustomer.Name);
             DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
             DB.AddParameter("@CustomerPass", mThisCustomer.Pass);
             DB.AddParameter("@CustomerBillingAddress", mThisCustomer.BillingAddress);
             DB.AddParameter("@CustomerDateOfBirth", mThisCustomer.DateOfBirth);
             DB.AddParameter("@CustomerActive", mThisCustomer.Active);
-
+            //execute the query returning the primary key value
             return DB.Execute("sproc_tblCustomer_Insert");
         }
-
+        //public property for ThisCustomer
         public clsCustomer ThisCustomer
         {
             get
             {
+                //return the private data
                 return mThisCustomer;
             }
 
 
             set
             {
+                //set the private data 
                 mThisCustomer = value;
             }
 
@@ -136,7 +146,10 @@ namespace ClassLibrary
 
         public void Update()
         {
+            //adds a new record to the database based on the value of ThisCustomer
+            //connect to the database
             clsDataConnection DB = new clsDataConnection();
+            //set the parameters
             DB.AddParameter("@CustomerId", mThisCustomer.Id);
             DB.AddParameter("@CustomerName", mThisCustomer.Name);
             DB.AddParameter("@CustomerEmail", mThisCustomer.Email);
@@ -145,6 +158,7 @@ namespace ClassLibrary
             DB.AddParameter("@CustomerDateOfBirth", mThisCustomer.DateOfBirth);
             DB.AddParameter("@CustomerActive", mThisCustomer.Active);
 
+            //execute the stored procedure
             DB.Execute("sproc_tblCustomer_Update");
         }
     }
