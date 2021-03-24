@@ -17,6 +17,7 @@ public partial class _1_List : System.Web.UI.Page
 
     }
 
+
         void DisplayStaff()
         {
             clsStaffCollection Staff = new clsStaffCollection();
@@ -25,4 +26,29 @@ public partial class _1_List : System.Web.UI.Page
             lstStaffList.DataTextField = "Name";
             lstStaffList.DataBind();
         }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["Id"] = -1;
+        Response.Redirect("AStaff.aspx");
     }
+
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 Id;
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            Id = Convert.ToInt32(lstStaffList.SelectedValue);
+            Session["Id"] = Id;
+            Response.Redirect("AStaff.aspx");
+        }
+        else
+        {
+            //lblError.Text = "Please select a record to delete from the list";
+
+        }
+    }
+
+    
+}

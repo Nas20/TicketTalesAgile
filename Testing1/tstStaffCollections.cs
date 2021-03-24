@@ -95,6 +95,59 @@ namespace Testing1
             AllStaff.Count = SomeCount;
             Assert.AreNotEqual(AllStaff.Count, SomeCount);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.Id = 2;
+            TestItem.Name = "Oskar Karcz";
+            TestItem.Email = "oskar@gmail.com";
+            TestItem.PhoneNumber = 112;
+            TestItem.Roles = "Admin";
+            TestItem.Gender = false;
+            TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.Id = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);    
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.Id = 2;
+            TestItem.Name = "Oskar Karcz";
+            TestItem.Email = "oskar@gmail.com";
+            TestItem.PhoneNumber = 112;
+            TestItem.Roles = "Admin";
+            TestItem.Gender = false;
+            TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.Id = PrimaryKey;
+            
+            TestItem.Id = 4;
+            TestItem.Name = " Another Name";
+            TestItem.Email = "Another Email";
+            TestItem.PhoneNumber = 119;
+            TestItem.Roles = "Another Role";
+            TestItem.Gender = true;
+            TestItem.DOB = Convert.ToDateTime("20/05/1999");
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+           
+        }
+
+        
     }
     }
 

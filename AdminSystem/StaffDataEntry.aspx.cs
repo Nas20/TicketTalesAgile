@@ -25,20 +25,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
         Error = AStaff.Valid(Name, DOB, Roles, Email, PhoneNumber);
         if (Error == "")
-        {      
-            AStaff.Name =Name;
+        {
+            AStaff.Name = Name;
             AStaff.Roles = Roles;
             AStaff.DOB = Convert.ToDateTime(DOB);
             AStaff.Email = Email;
             AStaff.PhoneNumber = Convert.ToInt32(PhoneNumber);
-            Session["AStaff"] = AStaff;
-            Response.Redirect("StaffViewer.aspx");
+            clsStaffCollection StaffList = new clsStaffCollection();
+
+            if (Id == -1)
+            {
+                StaffList.ThisStaff = AStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(Id);
+                StaffList.ThisStaff = AStaff;
+                StaffList.Update();
+            }
+            Response.Redirect("StaffList.aspx");
+        }
+        else
+        {
+            StaffList.ThisStaff = AStaff;
+            StaffList.Add();
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
             lblError.Text = Error;
         }
-       
+    }
 
     }
 

@@ -5,6 +5,7 @@ namespace ClassLibrary
     public class clsStaffCollection
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
         public List<clsStaff> StaffList
         {
@@ -52,7 +53,7 @@ namespace ClassLibrary
             }
 
             clsStaff TestItem = new clsStaff();
-            
+
             TestItem.Id = 2;
             TestItem.Name = "Oskar Karcz";
             TestItem.Email = "oskar@gmail.com";
@@ -64,17 +65,59 @@ namespace ClassLibrary
             TestItem = new clsStaff();
 
 
-          
+
         }
 
 
 
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff
+        {
+            get
+
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+        // public int Add()
+        // {
+        // mThisStaff.Id = 2;
+        // return mThisStaff.Id;
+        // }
+        //}
+
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PhoneNumber", mThisStaff.PhoneNumber);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@Roles", mThisStaff.Roles);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Gender", mThisStaff.Gender);
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PhoneNumber", mThisStaff.PhoneNumber);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Email", mThisStaff.Email);
+            DB.AddParameter("@Roles", mThisStaff.Roles);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Gender", mThisStaff.Gender);
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
+       
+    }     
     }
-
-
-
-}
 
 
       
