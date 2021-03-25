@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    public class clsStaffCollection
+    public class clsStaffCollection 
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
         clsStaff mThisStaff = new clsStaff();
@@ -31,44 +31,11 @@ namespace ClassLibrary
         }
         public clsStaffCollection()
         {
-
-            int Index = 2;
-            int RecordCount = 2;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStaff_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-
-            {
-                clsStaff AStaff = new clsStaff();
-                AStaff.Id = System.Convert.ToInt32(DB.DataTable.Rows[0]["Id"]);
-                AStaff.DOB = System.Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
-                AStaff.Email = System.Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                AStaff.Name = System.Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                AStaff.PhoneNumber = System.Convert.ToInt32(DB.DataTable.Rows[0]["PhoneNumber"]);
-                AStaff.Gender = System.Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
-                AStaff.Roles = System.Convert.ToString(DB.DataTable.Rows[0]["Roles"]);
-                mStaffList.Add(AStaff);
-                Index++;
-            }
-
-            clsStaff TestItem = new clsStaff();
-
-            TestItem.Id = 2;
-            TestItem.Name = "Oskar Karcz";
-            TestItem.Email = "oskar@gmail.com";
-            TestItem.PhoneNumber = 112;
-            TestItem.Roles = "Admin";
-            TestItem.Gender = true;
-            //TestItem.DOB = DateTime.Now.Date;
-            mStaffList.Add(TestItem);
-            TestItem = new clsStaff();
-
-
-
+            PopulateArray(DB);
         }
-
-
+          
 
         public clsStaff ThisStaff
         {
@@ -115,7 +82,52 @@ namespace ClassLibrary
             DB.Execute("sproc_tblStaff_Update");
         }
 
-       
+       public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Id", mThisStaff.Id);
+            DB.Execute("sproc_tblStaff_Delete");          
+        }
+
+        public void ReportByStaffId(string Id)
+        {           
+               //filters the records based on full or partial name
+                //connects to the database
+                clsDataConnection DB = new clsDataConnection();
+                //send the name parameter to the database
+                DB.AddParameter("@Id", Id);
+                //execute the stored procedure
+                DB.Execute("sproc_tblStaff_FilteredByStaffId");
+                PopulateArray(DB);
+        }
+
+    
+           
+           
+            
+
+            void PopulateArray(clsDataConnection DB)
+            {
+                int Index = 0;
+                int RecordCount;                
+                RecordCount = DB.Count;
+                mStaffList = new List<clsStaff>();
+                while (Index < RecordCount)
+                {
+                    clsStaff AStaff = new clsStaff();
+                    AStaff.Id = System.Convert.ToInt32(DB.DataTable.Rows[Index]["Id"]);
+                    AStaff.DOB = System.Convert.ToDateTime(DB.DataTable.Rows[Index]["DOB"]);
+                    AStaff.Email = System.Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                    AStaff.Name = System.Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                    AStaff.PhoneNumber = System.Convert.ToInt32(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                    AStaff.Gender = System.Convert.ToBoolean(DB.DataTable.Rows[Index]["Gender"]);
+                    AStaff.Roles = System.Convert.ToString(DB.DataTable.Rows[Index]["Roles"]);
+                    mStaffList.Add(AStaff);
+                    Index++;
+                }
+                
+                
+        }
     }     
     }
 

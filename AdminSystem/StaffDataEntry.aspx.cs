@@ -5,27 +5,60 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
-/**
+
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+
+    //variable to store primary key with the page level scope
+    Int32 Id;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //getting staff id
+        Id = Convert.ToInt32(Session["Id"]);
+        if (IsPostBack == false)
+        {
+            //if this is a new record
+            if (Id != -1)
+            {
+                //displays the current data for the record
+                DisplayStaff();
+            }
+        }
     }
 
-    protected void btnok_Click(object sender, EventArgs e)
+    void DisplayStaff()
+    {
+        //create an instance of customers
+        clsStaffCollection Staff = new clsStaffCollection();
+        //find the record to update
+        Staff.ThisStaff.Find(Id);
+        //display the data
+        txtDOB.Text = Staff.ThisStaff.DOB.ToString();
+        txtEmail.Text = Staff.ThisStaff.Email;
+        txtName.Text = Staff.ThisStaff.Name;
+        txtPhoneNumber.Text = Staff.ThisStaff.PhoneNumber.ToString();
+        txtRoles.Text = Staff.ThisStaff.Roles;
+        txtId.Text = Staff.ThisStaff.Id.ToString();
+        //chkGender.Text = AStaff.ThisStaff.Active.ToString();
+    }
+
+
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        string Id = txtId.Text;
+        //create string variables
+        //string Id = txtId.Text;
         string PhoneNumber = txtPhoneNumber.Text;
         string Name = txtName.Text;
         string Email = txtEmail.Text;
         string DOB = txtDOB.Text;
-        string Roles =  txtRoles.Text;
+        string Roles = txtRoles.Text;
         string Error = "";
         Error = AStaff.Valid(Name, DOB, Roles, Email, PhoneNumber);
         if (Error == "")
         {
+            //AStaff.Id = Id;
             AStaff.Name = Name;
             AStaff.Roles = Roles;
             AStaff.DOB = Convert.ToDateTime(DOB);
@@ -33,7 +66,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.PhoneNumber = Convert.ToInt32(PhoneNumber);
             clsStaffCollection StaffList = new clsStaffCollection();
 
-            //if (Id == -1)
+            if (Id == -1)
             {
                 StaffList.ThisStaff = AStaff;
                 StaffList.Add();
@@ -46,23 +79,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 StaffList.Update();
             }
             Response.Redirect("StaffList.aspx");
-        }
+        }                 
         else
         {
-            StaffList.ThisStaff = AStaff;
-            StaffList.Add();
-            Response.Redirect("StaffList.aspx");
-        {
-        else
-        {
-            //lblError.Text = Error;
-        }
-    }
+                    lblError.Text = Error;
+                }
+            }
 
-    }
-
-
-    protected void BtnFind_Click(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
         Int32 Id;
@@ -76,8 +100,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtName.Text = AStaff.Name;
             txtPhoneNumber.Text = AStaff.PhoneNumber.ToString();
             txtRoles.Text = AStaff.Roles;
-           
         }
+
+
+
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }
-*/
+   
+
+
+
+
+
