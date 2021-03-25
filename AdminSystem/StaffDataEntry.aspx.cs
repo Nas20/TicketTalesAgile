@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
-
+/**
 public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -33,11 +33,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.PhoneNumber = Convert.ToInt32(PhoneNumber);
             clsStaffCollection StaffList = new clsStaffCollection();
 
-            if (Id == -1)
+            //if (Id == -1)
             {
                 StaffList.ThisStaff = AStaff;
                 StaffList.Add();
             }
+
             else
             {
                 StaffList.ThisStaff.Find(Id);
@@ -51,17 +52,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             StaffList.ThisStaff = AStaff;
             StaffList.Add();
             Response.Redirect("StaffList.aspx");
-        }
+        {
         else
         {
-            lblError.Text = Error;
+            //lblError.Text = Error;
         }
     }
 
     }
 
 
-    protected void btnFind_Click(object sender, EventArgs e)
+    protected void BtnFind_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
         Int32 Id;
@@ -79,3 +80,4 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 }
+*/

@@ -23,7 +23,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Price = txtPrice.Text;
         string DatePurchased = txtDatePurchased.Text;
         string Error = "";
-        //Error = AStock.Valid(StockId, ItemName, Quantity, Price, DatePurchased);
+        Error = AStock.Valid(StockId, ItemName, Quantity, Price, DatePurchased);
         if (Error == "");
         {
             //AStock.Id = txtStockId.Text;
