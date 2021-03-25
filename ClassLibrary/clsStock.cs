@@ -34,6 +34,12 @@ namespace ClassLibrary
                 mItemName = value;
             }
         }
+
+        public string Valid(string stockId, string itemName, string quantity, string price, string datePurchased)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Quantity
         {
             get
@@ -79,6 +85,8 @@ namespace ClassLibrary
             }
         }
 
+        public bool Active { get; set; }
+
         public Boolean Find(int StockId)
         {
             //create an instance of data connection
@@ -104,6 +112,11 @@ namespace ClassLibrary
                 return false;
             }
 
+        }
+
+        public void Add(clsStock testStock)
+        {
+           
         }
 
         /**
