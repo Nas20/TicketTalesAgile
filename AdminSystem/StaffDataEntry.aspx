@@ -47,10 +47,11 @@
         <br />
         <br />
         <br />
+        <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
         <br />
-        <asp:Button ID="btnok" runat="server" OnClick="btnok_Click" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="BtnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server"  OnClick="btnCancel_Click" Text="Cancel" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
     </form>
