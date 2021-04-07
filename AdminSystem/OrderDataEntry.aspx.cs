@@ -20,6 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //if this is not a new record
             if(OrderId != -1)
             {
+                //displays the current data for the record
                 DisplayOrders();
             }
         }
@@ -43,13 +44,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //create an instance of the class
         clsOrder AnOrder = new clsOrder();
+        //variable to store primary key
         Int32 OrderId;
+        //variable to store the result of the find
         Boolean Found = false;
+        //get the primary key entred by the user
         OrderId = Convert.ToInt32(txtOrderId.Text);
+        //find the record
         Found = AnOrder.Find(OrderId);
+        //check to see if its found
         if (Found == true)
         {
+            //return and print out the correect values
             txtCustomerId.Text = AnOrder.CustomerId.ToString();
             txtCustomerAddress.Text = AnOrder.Address;
             txtDispatchDate.Text = AnOrder.DateDispatch.ToString();
@@ -59,7 +67,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        //create an instance of the class
         clsOrder AnOrder = new clsOrder();
+        //create a set of string variables
         string cID = txtCustomerId.Text;
         string cAddress = txtCustomerAddress.Text;
         string itemName= txtItemName.Text;
