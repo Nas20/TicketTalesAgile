@@ -12,7 +12,9 @@ namespace Testing4
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the class
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //check to see if its OK
             Assert.IsNotNull(AllOrders);
         }
 
@@ -48,8 +50,11 @@ namespace Testing4
         [TestMethod]
         public void OrderListOK()
         {
+            //create an instance of the class
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //create a testing list
             List<clsOrder> TestList = new List<clsOrder>();
+            //create some test data for the class
             clsOrder TestItem = new clsOrder();
             TestItem.Address = "some sort of address";
             TestItem.CustomerId = 2;
@@ -58,8 +63,11 @@ namespace Testing4
             TestItem.ItemName = "some item";
             TestItem.ItemQuantity = 4;
             TestItem.OrderId = 2;
+            //add the test data to the list
             TestList.Add(TestItem);
+            //set the record based on the test data
             AllOrders.OrderList = TestList;
+            //check to see they are both equal
             Assert.AreEqual(AllOrders.OrderList, TestList);
         }
 
@@ -68,7 +76,9 @@ namespace Testing4
         [TestMethod]
         public void ThisOrderOK()
         {
+            //create an instance of the class
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //create some test data for the class
             clsOrder TestOrder = new clsOrder();
             TestOrder.Address = "some address";
             TestOrder.CustomerId = 2;
@@ -77,15 +87,20 @@ namespace Testing4
             TestOrder.ItemQuantity = 3;
             TestOrder.Made = true;
             TestOrder.OrderId = 7;
+            //set the record based on the test data
             AllOrders.ThisOrder = TestOrder;
+            //check to see they are both equal
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
         }
 
         [TestMethod]
         public void ListandCountOK()
         {
+            //create an instance of the class
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //create a list for the class
             List<clsOrder> TestList = new List<clsOrder>();
+            //create some test data for the class
             clsOrder TestItem = new clsOrder();
             TestItem.Address = "some address";
             TestItem.CustomerId = 3;
@@ -94,8 +109,11 @@ namespace Testing4
             TestItem.ItemQuantity = 7;
             TestItem.Made = true;
             TestItem.OrderId = 4;
+            //add the test data to the list
             TestList.Add(TestItem);
+            //set the record based on the test data
             AllOrders.OrderList = TestList;
+            //check to see they are both equal
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
