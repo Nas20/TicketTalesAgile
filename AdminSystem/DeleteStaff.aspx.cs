@@ -12,6 +12,7 @@ public partial class DeleteStaff : System.Web.UI.Page
     Int32 Id;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of addresses to be deleted from the session object
         Id = Convert.ToInt32(Session["Id"]);
     }
 
