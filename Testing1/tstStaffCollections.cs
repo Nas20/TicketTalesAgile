@@ -15,17 +15,22 @@ namespace Testing1
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
+            //test to see if it exists
             Assert.IsNotNull(AllStaff);
         }
 
         [TestMethod]
         public void StaffListOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
+            // create some test data to assign to the property
             List<clsStaff> TestList = new List<clsStaff>();
+            //create the item of the test data
             clsStaff TestItem = new clsStaff();
-
+            //set properties
             TestItem.Id = 2;
             TestItem.Name = "Oskar Karcz";
             TestItem.Email = "oskar@gmail.com";
@@ -33,8 +38,11 @@ namespace Testing1
             TestItem.Roles = "Admin";
             TestItem.Gender = true;
             TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            //add the item to test list
             TestList.Add(TestItem);
+            //assign the data to the property
             AllStaff.StaffList = TestList;
+            //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
 
@@ -42,9 +50,13 @@ namespace Testing1
         [TestMethod]
         public void ListAndCountOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
+            // create some test data to assign to the property
             List<clsStaff> TestList = new List<clsStaff>();
+            //create the item of the test data
             clsStaff TestItem = new clsStaff();
+            //set properties
             TestItem.Id = 2;
             TestItem.Name = "Oskar Karcz";
             TestItem.Email = "oskar@gmail.com";
@@ -52,40 +64,50 @@ namespace Testing1
             TestItem.Roles = "Admin";
             TestItem.Gender = true;
             TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            //add the item to test list
             TestList.Add(TestItem);
+            //assign the data to the property
             AllStaff.StaffList = TestList;
+            //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
         
         [TestMethod]
         public void ThisStaffPropertyOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of the test data
             clsStaff TestItem = new clsStaff();
+            //set properties
             TestItem.Id = 2;
             TestItem.Name = "Oskar Karcz";
             TestItem.Email = "oskar@gmail.com";
             TestItem.PhoneNumber = 112;
             TestItem.Roles = "Admin";
             TestItem.Gender = false;
-            TestItem.DOB = Convert.ToDateTime("19/04/1996");           
+            TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            //assign the data to the property
             AllStaff.ThisStaff = TestItem;
+            //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
-/*
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Assert.AreEqual(AllStaff.Count, 2);
-        }
-        
-        */
+        /*
+                [TestMethod]
+                public void TwoRecordsPresent()
+                {
+                //create an instance of the Staff Collection Class
+                    clsStaffCollection AllStaff = new clsStaffCollection();
+                    Assert.AreEqual(AllStaff.Count, 2);
+                }
+
+                */
 
         [TestMethod]
         public void CountPropertyOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
             Int32 SomeCount = 2;
             AllStaff.Count = SomeCount;
@@ -95,9 +117,13 @@ namespace Testing1
         [TestMethod]
         public void AddMethodOK()
         {
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
             clsStaff TestItem = new clsStaff();
+            //var to store primary key
             Int32 PrimaryKey = 0;
+            //set its properties
             TestItem.Id = 2;
             TestItem.Name = "Oskar Karcz";
             TestItem.Email = "oskar@gmail.com";
@@ -106,48 +132,54 @@ namespace Testing1
             TestItem.Gender = false;
             TestItem.DOB = Convert.ToDateTime("19/04/1996");
             AllStaff.ThisStaff = TestItem;
+            //add the record
             PrimaryKey = AllStaff.Add();
+            //set primary key of the test data
             TestItem.Id = PrimaryKey;
+            //assign the data to the property
             AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);    
         }
 
-        
-      
-        //public void UpdateMethodOK()
-        //{
-            //clsStaffCollection AllStaff = new clsStaffCollection();
-            //clsStaff TestItem = new clsStaff();
-            //Int32 PrimaryKey = 0;
-            //TestItem.Id = 2;
-           // TestItem.Name = "Oskar Karcz";
-           // TestItem.Email = "oskar@gmail.com";
-           // TestItem.PhoneNumber = 112;
-           // TestItem.Roles = "Admin";
-           // TestItem.Gender = false;
-           // TestItem.DOB = Convert.ToDateTime("19/04/1996");
-           // AllStaff.ThisStaff = TestItem;
-           // PrimaryKey = AllStaff.Add();
-           // TestItem.Id = PrimaryKey;
-            
-            //modified data
-            //TestItem.Id = 4;
-          //  TestItem.Name = " Another Name";
-          //  TestItem.PhoneNumber = 119;
-          //  TestItem.Roles = "Another Role";
-          //  TestItem.Gender = true;
-          //  TestItem.DOB = Convert.ToDateTime("20/05/1999");
-          //  AllStaff.ThisStaff = TestItem;
-          //  AllStaff.Update();
-          //  AllStaff.ThisStaff.Find(PrimaryKey);
-           // Assert.AreEqual(AllStaff.ThisStaff, TestItem);       
-        //}
+       /* public void UpdateMethodOK()
+        {
+        //create an instance of the Staff Collection Class
+        clsStaffCollection AllStaff = new clsStaffCollection();
+        clsStaff TestItem = new clsStaff();
+        Int32 PrimaryKey = 0;
+         //TestItem.Id = 2;
+         TestItem.Name = "A name";
+         TestItem.Email = "an email";
+         TestItem.PhoneNumber = 112;
+         TestItem.Roles = "some role";
+        //TestItem.Gender = false;
+        //TestItem.DOB = Convert.ToDateTime("19/04/1996");
+        //assign the data to the property
+         AllStaff.ThisStaff = TestItem;
+         PrimaryKey = AllStaff.Add();
+         TestItem.Id = PrimaryKey;
 
+        //modified data
+         TestItem.Id = 4;
+         TestItem.Name = " Another Name";
+         TestItem.PhoneNumber = 114;
+         TestItem.Roles = "Another Role";
+         //TestItem.Gender = true;
+         //TestItem.DOB = Convert.ToDateTime("20/05/1999");
+         //assign the data to the property
+         AllStaff.ThisStaff = TestItem;
+         AllStaff.Update();
+         AllStaff.ThisStaff.Find(PrimaryKey);
+        Assert.AreEqual(AllStaff.ThisStaff, TestItem);       
+        }
+
+    */
 
         [TestMethod]
         public void DeleteMethodOK()
         {
-            //Create instance of the class
+            //create an instance of the Staff Collection Class
             clsStaffCollection AllStaff = new clsStaffCollection();
             //Create item to test data
             clsStaff TestItem = new clsStaff();
@@ -189,11 +221,9 @@ namespace Testing1
         public void ReportByStaffIdNoneFound()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
-          // FilteredStaffId.ReportByStaffId("5");
+            //FilteredStaffId.ReportByStaffId("5");
             //Assert.AreEqual(0, FilteredStaffId.Count);
         }
-
-       
 
         //public void ReportByStaffIdDataFound()
         //{
@@ -216,9 +246,5 @@ namespace Testing1
                // }
                // Assert.IsTrue(OK);
            // }
-
-   
         }
     }
-    
-
