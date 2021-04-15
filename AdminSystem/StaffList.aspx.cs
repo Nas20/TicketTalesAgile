@@ -115,7 +115,7 @@ public partial class _1_List : System.Web.UI.Page
     {
         //create an instance of the staff collection class
         clsStaffCollection Staff = new clsStaffCollection();
-        Staff.ReportByStaffId("");
+        Staff.ReportByStaffName("");
         //set the data source to the list of staff in the collection
         lstStaffList.DataSource = Staff.StaffList;
         //set the name of the primary key

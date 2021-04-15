@@ -46,7 +46,7 @@ namespace Testing1
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
 
-     
+
         [TestMethod]
         public void ListAndCountOK()
         {
@@ -71,7 +71,7 @@ namespace Testing1
             //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
-        
+
         [TestMethod]
         public void ThisStaffPropertyOK()
         {
@@ -139,42 +139,40 @@ namespace Testing1
             //assign the data to the property
             AllStaff.ThisStaff.Find(PrimaryKey);
             //test to see thisStaff matches the test data
-            Assert.AreEqual(AllStaff.ThisStaff, TestItem);    
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
-       /* public void UpdateMethodOK()
+        public void UpdateMethodOK()
         {
-        //create an instance of the Staff Collection Class
-        clsStaffCollection AllStaff = new clsStaffCollection();
-        clsStaff TestItem = new clsStaff();
-        Int32 PrimaryKey = 0;
-         //TestItem.Id = 2;
-         TestItem.Name = "A name";
-         TestItem.Email = "an email";
-         TestItem.PhoneNumber = 112;
-         TestItem.Roles = "some role";
-        //TestItem.Gender = false;
-        //TestItem.DOB = Convert.ToDateTime("19/04/1996");
-        //assign the data to the property
-         AllStaff.ThisStaff = TestItem;
-         PrimaryKey = AllStaff.Add();
-         TestItem.Id = PrimaryKey;
+            //create an instance of the Staff Collection Class
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            //TestItem.Id = 2;
+            TestItem.Name = "A name";
+            TestItem.Email = "an email";
+            TestItem.PhoneNumber = 112;
+            TestItem.Roles = "some role";
+            //TestItem.Gender = false;
+            //TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            //assign the data to the property
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.Id = PrimaryKey;
 
-        //modified data
-         TestItem.Id = 4;
-         TestItem.Name = " Another Name";
-         TestItem.PhoneNumber = 114;
-         TestItem.Roles = "Another Role";
-         //TestItem.Gender = true;
-         //TestItem.DOB = Convert.ToDateTime("20/05/1999");
-         //assign the data to the property
-         AllStaff.ThisStaff = TestItem;
-         AllStaff.Update();
-         AllStaff.ThisStaff.Find(PrimaryKey);
-        Assert.AreEqual(AllStaff.ThisStaff, TestItem);       
+            //modified data
+            TestItem.Id = 4;
+            TestItem.Name = " Another Name";
+            TestItem.PhoneNumber = 114;
+            TestItem.Roles = "Another Role";
+            //TestItem.Gender = true;
+            //TestItem.DOB = Convert.ToDateTime("20/05/1999");
+            //assign the data to the property
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
-
-    */
 
         [TestMethod]
         public void DeleteMethodOK()
@@ -208,43 +206,53 @@ namespace Testing1
             //Test to check record not found
             Assert.IsFalse(Found);
         }
-          
+
         [TestMethod]
-        public void ReportByStaffIdMethodOK()
+        public void ReportByStaffNameMethodOK()
         {
+            //create an insatcne of the class containing unfiltered results
             clsStaffCollection AllStaff = new clsStaffCollection();
-            //FilteredStaffId.ReportByStaffId("");
-            //Assert.AreEqual(AllStaff.Count, FilteredStaffId.Count);
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffName = new clsStaffCollection();
+            //apply a blank string (should return all the records);
+            FilteredStaffName.ReportByStaffName("");
+            Assert.AreEqual(AllStaff.Count, FilteredStaffName.Count);
         }
 
         [TestMethod]
-        public void ReportByStaffIdNoneFound()
+        public void ReportByStaffNameNoneFound()
         {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            //FilteredStaffId.ReportByStaffId("5");
-            //Assert.AreEqual(0, FilteredStaffId.Count);
+            clsStaffCollection FilteredStaffName = new clsStaffCollection();
+            FilteredStaffName.ReportByStaffName("Ayaz");
+            Assert.AreEqual(0, FilteredStaffName.Count);
         }
 
-        //public void ReportByStaffIdDataFound()
-        //{
-           //clsStaffCollection FilteredStaffId = new clsStaffCollection();
-           // Boolean OK = true;
-           // FilteredStaffId.ReportByStaffId("x");
-           // if (FilteredStaffId.Count == 2)
-            //{
-               // if (FilteredStaffId.StaffList[0].Id != 1)
-                //{
-                   // OK = false;
-               // }
-                //if (FilteredStaffId.StaffList[0].Id != 2)
-                //{
-                 //   OK = false;
-               // }
-              //  else
-              //  {
-                //    OK = false;
-               // }
-               // Assert.IsTrue(OK);
-           // }
+        [TestMethod]
+        public void ReportByStaffNameDataFound()
+        {
+            //create the instance of the filtered data 
+            clsStaffCollection FilteredStaffName = new clsStaffCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a post code that doesnt exist
+            FilteredStaffName.ReportByStaffName("Joana");
+            //check that the correct number of records are found. 
+            if (FilteredStaffName.Count == 1)
+            {
+                if (FilteredStaffName.StaffList[0].Id != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredStaffName.StaffList[1].Id != 5)
+                {
+                    OK = false;
+                }
+                else
+                {
+                    OK = false;
+                }
+                Assert.IsTrue(OK);
+            }
         }
     }
+}
