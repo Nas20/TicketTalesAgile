@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockList.aspx.cs" Inherits="_1_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockList.aspx.cs" Inherits="_Default" %>
 
 <!DOCTYPE html>
 
@@ -9,8 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ListBox ID="lstStockList" runat="server" Height="678px" Width="673px"></asp:ListBox>
+            <asp:ListBox ID="lstStockList" runat="server" Height="480px" Width="500px"></asp:ListBox>
         </div>
+        <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
     </form>
 </body>
 </html>

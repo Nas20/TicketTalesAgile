@@ -113,15 +113,15 @@ namespace ClassLibrary
             DB.Execute("sproc_tblStaff_Delete");          
         }
 
-        public void ReportByStaffId(string Id)
+        public void ReportByStaffName(string Name)
         {           
                 //filters the records based on staff Id
                 //connects to the database
                 clsDataConnection DB = new clsDataConnection();
                 //send the name parameter to the database
-                DB.AddParameter("@Id", Id);
+                DB.AddParameter("@Name", Name);
                 //execute the stored procedure
-                DB.Execute("sproc_tblStaff_FilteredByStaffId");
+                DB.Execute("sproc_tblStaff_FilteredByStaffName");
                 //populate the array list with the data table
                 PopulateArray(DB);
         }
