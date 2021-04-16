@@ -7,7 +7,7 @@ namespace ClassLibrary
         private Int32 mStockId;
         private string mItemName;
         private int mQuantity;
-        private Decimal mPrice;
+        private Decimal mStockPrice;
         private Boolean mStockAvailable;
         private DateTime mDatePurchased;
 
@@ -35,7 +35,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string stockId, string itemName, string quantity, string price, string datePurchased)
+        public string Valid(string stockId, string itemName, string quantity, string stockprice, string datePurchased)
         {
             throw new NotImplementedException();
         }
@@ -51,15 +51,15 @@ namespace ClassLibrary
                 mQuantity = value;
             }
         }
-        public Decimal Price
+        public Decimal StockPrice
         {
             get
             {
-                return mPrice;
+                return mStockPrice;
             }
             set
             {
-                mPrice = Convert.ToDecimal(value);
+                mStockPrice = Convert.ToDecimal(value);
             }
         }
         public bool StockAvailable
@@ -101,7 +101,7 @@ namespace ClassLibrary
                 mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
                 mItemName = Convert.ToString(DB.DataTable.Rows[0]["ItemName"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["StockPrice"]);
+                mStockPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["StockPrice"]);
                 mStockAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["StockAvailable"]);
                 mDatePurchased = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
                 //always return true
@@ -114,17 +114,7 @@ namespace ClassLibrary
 
         }
 
-        public void Add(clsStock testStock)
-        {
-           
-        }
-
-        /**
-         * 
-         * WK21
-         */
-
-        public string Valid(string StockId, string ItemName, string Quantity, string Price, string StockAvailable, string DatePurchased)
+        public string Valid(string StockId, string ItemName, string Quantity, string StockPrice, string StockAvailable, string DatePurchased)
         {
             String Error = "";
             DateTime DateTemp;
@@ -156,11 +146,11 @@ namespace ClassLibrary
                 Error = Error + "The Quantity must be less than 10 Characters : ";
             }
 
-            if (Price.Length == 0)
+            if (StockPrice.Length == 0)
             {
                 Error = Error + "The Price must not be blank : ";
             }
-            if (Price.Length > 10)
+            if (StockPrice.Length > 10)
             {
                 Error = Error + "The Price must be less than 10 Characters : ";
             }
@@ -192,5 +182,10 @@ namespace ClassLibrary
             }
                 return Error;
             }
+
+        public void Find(string stockId)
+        {
+            throw new NotImplementedException();
         }
+    }
     }
