@@ -56,8 +56,8 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             decimal TestData = 9;
-            AStock.Price = TestData;
-            Assert.AreEqual(AStock.Price, TestData);
+            AStock.StockPrice = TestData;
+            Assert.AreEqual(AStock.StockPrice, TestData);
         }
 
         [TestMethod]
@@ -144,7 +144,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 StockId = 1;
             Found = AStock.Find(StockId);
-            if (AStock.Price != Convert.ToDecimal("12"))
+            if (AStock.StockPrice != Convert.ToDecimal("12"))
             {
                 OK = false;
             }
