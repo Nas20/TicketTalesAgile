@@ -60,7 +60,7 @@ namespace Testing3
             AllStock.StockList = TestList;
             Assert.AreEqual(AllStock.StockList, TestList);
         }
-
+        /*
         [TestMethod]
         public void CountPropertyOK()
         {
@@ -69,7 +69,7 @@ namespace Testing3
             AllStock.Count = SomeCount;
             Assert.AreEqual(AllStock.Count, SomeCount);
         }
-
+        */
         [TestMethod]
         public void ThisStockOK()
         {
@@ -103,7 +103,7 @@ namespace Testing3
             Assert.AreEqual(AllStock.Count, TestStock);
 
         }
-        /*
+        
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -132,7 +132,7 @@ namespace Testing3
             TestStock.ItemName = "Rubgy";
             TestStock.Quantity = 150;
             TestStock.StockPrice = 4;
-            //TestStock.StockAvailable = ;
+            //TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
             //set the record based on the new test data
             AllStock.ThisStock = TestStock;
@@ -144,12 +144,101 @@ namespace Testing3
             Assert.AreEqual(AllStock.ThisStock, TestStock);
 
         }
-        /**
+        /*
         [TestMethod]
         public void TwoRecordsPresent()
         {
             clsStockCollection AllStock = new clsStockCollection();
             Assert.AreEqual(AllStock.Count, 2);
+        }
+        */
+        /*
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestStock = new clsStock();
+            //var to store primary key
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestStock.ItemName = "Rubgy";
+            TestStock.Quantity = 150;
+            TestStock.StockPrice = 4;
+            TestStock.StockAvailable = true;
+            TestStock.DatePurchased = DateTime.Now.Date;
+            //set ThisOrder to the test data
+            AllStock.ThisStock = TestStock;
+            //Add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestStock.StockId = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //delete the record
+            AllStock.Delete();
+            //now find the record
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+            //test to see if the order was not found
+            Assert.IsFalse(Found);
+        }
+        */
+        [TestMethod]
+        public void ReportByItemNameOK()
+        {
+            //create an instance of the customer collection class
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a blank string(should return all records)
+            FilteredStock.ReportByItemName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByItemNameNoneFound()
+        {
+            //create an insatnce of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a item name that doesnt exist
+            FilteredStock.ReportByItemName("dodgeball");
+            //test to see that there are no reocrds
+            Assert.AreEqual(0, FilteredStock.Count);
+        }
+        /*
+        [TestMethod]
+        public void ReportByItemNameDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a name that doesnt exist
+            FilteredStock.ReportByItemName("xxxxxx xxxxx");
+            //check the correct number of records are found
+            if (FilteredStock.Count == 2)
+            {
+                //check that the first record is ID 30/33
+                if (FilteredStock.StockList[0].StockId != 30)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 33
+                if (FilteredStock.StockList[0].StockId != 33)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+
         }
         */
     }
