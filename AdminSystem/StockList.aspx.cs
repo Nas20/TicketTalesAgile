@@ -87,5 +87,39 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer collection
+        clsStockCollection AllStock = new clsStockCollection();
+            AllStock.ReportByItemName(txtEnterName.Text);
+            //set the data source to the list of customers in the collection
+            lstStockList.DataSource = AllStock.StockList;
+            //set the name of the primary key
+            lstStockList.DataValueField = "Id";
+            //set the data field to display
+            lstStockList.DataTextField = "Name";
+            //bind the data to the list
+            lstStockList.DataBind();
+
+
+        }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer collection
+        clsStockCollection AllStock = new clsStockCollection();
+        AllStock.ReportByItemName("");
+        //clear any existing filter to tidy up the interface
+        txtEnterName.Text = "";
+        lstStockList.DataSource = AllStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "Id";
+        //set the data field to display
+        lstStockList.DataTextField = "Name";
+        //bind the data to the list
+        lstStockList.DataBind();
+
+    }
 }
       
