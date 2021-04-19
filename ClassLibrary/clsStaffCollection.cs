@@ -125,8 +125,7 @@ namespace ClassLibrary
                 //populate the array list with the data table
                 PopulateArray(DB);
         }
-
-          
+       
             void PopulateArray(clsDataConnection DB)
             {
 
