@@ -32,7 +32,6 @@ namespace ClassLibrary
         }
 
         
-
         //public property
         public string Name
         {
@@ -66,8 +65,6 @@ namespace ClassLibrary
         }
 
 
- 
-
         //public property
         public DateTime DOB
         {
@@ -84,7 +81,6 @@ namespace ClassLibrary
         }
 
     
-
         //public property
         public bool Gender
         {
@@ -115,8 +111,7 @@ namespace ClassLibrary
                 mPhoneNumber = value;
             }
         }
-
-        
+      
 
         //public property
         public Int32 Id

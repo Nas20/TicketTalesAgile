@@ -142,6 +142,7 @@ namespace Testing1
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
+        [TestMethod]
         public void UpdateMethodOK()
         {
             //create an instance of the Staff Collection Class
