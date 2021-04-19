@@ -32,7 +32,6 @@ namespace ClassLibrary
             }
             set
             {
-                //we shall worry about this later
             }
         }
 
