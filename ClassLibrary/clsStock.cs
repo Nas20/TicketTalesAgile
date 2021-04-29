@@ -4,33 +4,40 @@ namespace ClassLibrary
 {
     public class clsStock
     {
+        //set the private data members
         private Int32 mStockId;
         private string mItemName;
         private int mQuantity;
         private Decimal mStockPrice;
         private Boolean mStockAvailable;
         private DateTime mDatePurchased;
+        private Boolean mActive;
 
-
+        //public property for stock Id
         public Int32 StockId
         {
             get
             {
+                //return private data
                 return mStockId;
             }
             set
             {
+                //set private data
                 mStockId = value;
             }
         }
+        //public property for stock Item Name
         public string ItemName
         {
             get
             {
+                //return private data
                 return mItemName;
             }
             set
             {
+                //set private data
                 mItemName = value;
             }
         }
@@ -39,61 +46,87 @@ namespace ClassLibrary
         {
             throw new NotImplementedException();
         }
-
+        //public property for stock Quantity
         public int Quantity
         {
             get
             {
+                //return private data
                 return mQuantity;
             }
             set
             {
+                //set private data
                 mQuantity = value;
             }
         }
+
+        //public property for stock StockPrice
         public Decimal StockPrice
         {
             get
             {
+                //return private data
                 return mStockPrice;
             }
             set
             {
+                //set private data
                 mStockPrice = Convert.ToDecimal(value);
             }
         }
+
+        //public property for stock StockAvailable
         public bool StockAvailable
         {
             get
             {
+                //return private data
                 return mStockAvailable;
             }
             set
             {
+                //set private data
                 mStockAvailable = value;
             }
         }
+
+        //public property for stock DatePurchased
         public DateTime DatePurchased
         {
             get
             {
+                //return private data
                 return mDatePurchased;
             }
             set
             {
+                //set private data
                 mDatePurchased = value;
             }
         }
 
-        public bool Active { get; set; }
+        public bool Active
+        {
+            get
+            {
+                //return private data
+                return mActive;
+            }
+            set
+            {
+                //set private data 
+                mActive = value;
+            }
+        }
 
         public Boolean Find(int StockId)
         {
             //create an instance of data connection
-            //add the parameter for the stock id to match
-            //execute the stored procedure
             clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the stock id to match
             DB.AddParameter("@StockId", StockId);
+            //execute the stored procedure
             DB.Execute("sproc_tblStock_FilterByStockId");
             if (DB.Count == 1)
             {
@@ -107,8 +140,10 @@ namespace ClassLibrary
                 //always return true
                 return true;
             }
+            //if no record is found
             else
             {
+                //returns false which indicates there is a problem. 
                 return false;
             }
 
@@ -180,12 +215,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The date was not a valid date";
             }
-                return Error;
-            }
-
-        public void Find(string stockId)
-        {
-            throw new NotImplementedException();
+            return Error;
         }
     }
-    }
+}
