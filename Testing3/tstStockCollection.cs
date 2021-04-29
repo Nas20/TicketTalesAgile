@@ -11,7 +11,9 @@ namespace Testing3
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the stock class
             clsStockCollection AllStock = new clsStockCollection();
+            //test to see if it exists
             Assert.IsNotNull(AllStock);
         }
         /*
@@ -27,8 +29,8 @@ namespace Testing3
             //set the properties
             TestStock.StockId = 1;
             TestStock.ItemName = "some name";
-            TestStock.Quantity = 150;
-            TestStock.StockPrice = 12;
+            TestStock.Quantity = 90;
+            TestStock.StockPrice = 13;
             TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
             //set the test data properties to the ThisOrder
@@ -88,18 +90,24 @@ namespace Testing3
         [TestMethod]
         public void ListAndCountOK()
         {
+            //create an instance of the class
             clsStockCollection AllStock = new clsStockCollection();
+            //create a list for the class
             List<clsStock> TestList = new List<clsStock>();
+            //create some test data for the new class
             clsStock TestStock = new clsStock();
             TestStock.Active = true;
-            TestStock.StockId = 1;
+            TestStock.StockId = 10;
             TestStock.ItemName = "some name";
-            TestStock.Quantity = 150;
-            TestStock.StockPrice = 12;
+            TestStock.Quantity = 80;
+            TestStock.StockPrice = 9;
             TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
+            //add the item to the test list
             //TestStock.Add(TestStock);
+            //assign the data to the property
             AllStock.ThisStock = TestStock;
+            //test to see if the two values are the same
             Assert.AreEqual(AllStock.Count, TestStock);
 
         }
@@ -107,7 +115,7 @@ namespace Testing3
         [TestMethod]
         public void UpdateMethodOK()
         {
-            //create an instance of the customer collection class
+            //create an instance of the stock collection class
             clsStockCollection AllStock = new clsStockCollection();
             //create the item of test data
             clsStock TestStock = new clsStock();
@@ -115,7 +123,7 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestStock.Active = true;
-            TestStock.ItemName = "A name";
+            TestStock.ItemName = "TennisMatch";
             TestStock.Quantity = 150;
             TestStock.StockPrice =4;
             //TestStock.StockAvailable = ;
@@ -129,9 +137,9 @@ namespace Testing3
 
             //modify the test data
             TestStock.Active = false;
-            TestStock.ItemName = "Rubgy";
-            TestStock.Quantity = 150;
-            TestStock.StockPrice = 4;
+            TestStock.ItemName = "TennisMatch";
+            TestStock.Quantity = 200;
+            TestStock.StockPrice = 6;
             //TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
             //set the record based on the new test data
@@ -163,7 +171,7 @@ namespace Testing3
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set the properties
-            TestStock.ItemName = "Rubgy";
+            TestStock.ItemName = "TennisMatch";
             TestStock.Quantity = 150;
             TestStock.StockPrice = 4;
             TestStock.StockAvailable = true;
@@ -185,16 +193,16 @@ namespace Testing3
         }
         */
         [TestMethod]
-        public void ReportByItemNameOK()
+        public void ReportByItemNameMethodOK()
         {
             //create an instance of the customer collection class
             clsStockCollection AllStock = new clsStockCollection();
             //create an instance of the filtered data
-            clsStockCollection FilteredStock = new clsStockCollection();
+            clsStockCollection FilteredItemName = new clsStockCollection();
             //apply a blank string(should return all records)
-            FilteredStock.ReportByItemName("");
+            FilteredItemName.ReportByItemName("");
             //test to see that the two values are the same
-            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+            Assert.AreEqual(AllStock.Count, FilteredItemName.Count);
 
         }
 
@@ -202,11 +210,11 @@ namespace Testing3
         public void ReportByItemNameNoneFound()
         {
             //create an insatnce of the filtered data
-            clsStockCollection FilteredStock = new clsStockCollection();
+            clsStockCollection FilteredItemName = new clsStockCollection();
             //apply a item name that doesnt exist
-            FilteredStock.ReportByItemName("dodgeball");
+            FilteredItemName.ReportByItemName("dodgeball");
             //test to see that there are no reocrds
-            Assert.AreEqual(0, FilteredStock.Count);
+            Assert.AreEqual(0, FilteredItemName.Count);
         }
         /*
         [TestMethod]
@@ -216,18 +224,18 @@ namespace Testing3
             clsStockCollection FilteredStock = new clsStockCollection();
             //var to store outcome
             Boolean OK = true;
-            //apply a name that doesnt exist
-            FilteredStock.ReportByItemName("xxxxxx xxxxx");
+            //apply an item name that doesn't exist
+            FilteredStock.ReportByItemName("Dodgeball");
             //check the correct number of records are found
             if (FilteredStock.Count == 2)
             {
-                //check that the first record is ID 30/33
-                if (FilteredStock.StockList[0].StockId != 30)
+                //check the first record is ID 20
+                if (FilteredStock.StockList[0].StockId != 20)
                 {
                     OK = false;
                 }
-                //check that the first record is ID 33
-                if (FilteredStock.StockList[0].StockId != 33)
+                //check the second record is ID 23
+                if (FilteredStock.StockList[1].StockId != 23)
                 {
                     OK = false;
                 }
@@ -241,5 +249,6 @@ namespace Testing3
 
         }
         */
+        
     }
 }

@@ -141,7 +141,7 @@ namespace Testing1
             //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
-
+        /*
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -174,7 +174,7 @@ namespace Testing1
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
-
+        */
         [TestMethod]
         public void DeleteMethodOK()
         {
