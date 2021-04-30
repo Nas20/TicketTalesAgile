@@ -7,7 +7,6 @@ namespace Testing2
     [TestClass]
     public class tstCustomer
     {
-
         //good test data
         //create some test data to pass to the method
         string CName = "A Name";
