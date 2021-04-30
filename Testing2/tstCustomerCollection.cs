@@ -29,17 +29,17 @@ namespace Testing2
             //var to store outcome
             Boolean OK = true;
             //apply a name that doesnt exist
-            FilteredCustomers.ReportByName("xxxxxx xxxxx");
+            FilteredCustomers.ReportByName("Nasreen Shaikh");
             //check the correct number of records are found
             if(FilteredCustomers.Count == 2)
             {
                 //check that the first record is ID 30/33
-                if (FilteredCustomers.CustomerList[0].Id != 30)
+                if (FilteredCustomers.CustomerList[0].Id != 31)
                  {
                     OK = false;
                 }
                 //check that the first record is ID 33
-                if (FilteredCustomers.CustomerList[0].Id != 33)
+                if (FilteredCustomers.CustomerList[0].Id != 37)
                 {
                     OK = false;
                 }
@@ -48,6 +48,9 @@ namespace Testing2
             {
                 OK = false;
             }
+            //test to see if there are no records
+            //change to isTrue
+            Assert.IsFalse(OK);
             
         }
         [TestMethod]
