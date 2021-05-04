@@ -900,7 +900,7 @@ namespace Testing2
             //invoke the method
             Int32 Id = 3;
             Found = ACustomer.Find(Id);
-            if (ACustomer.Active != (true))
+            if (ACustomer.Active != false)
             {
                 OK = false;
             }
