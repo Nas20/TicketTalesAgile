@@ -39,7 +39,7 @@ namespace Testing2
                     OK = false;
                 }
                 //check that the first record is ID 33
-                if (FilteredCustomers.CustomerList[0].Id != 37)
+                if (FilteredCustomers.CustomerList[1].Id != 37)
                 {
                     OK = false;
                 }
@@ -49,8 +49,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see if there are no records
-            //change to isTrue
-            Assert.IsFalse(OK);
+            Assert.IsTrue(OK);
             
         }
         [TestMethod]
