@@ -16,6 +16,7 @@ namespace Testing3
             //test to see if it exists
             Assert.IsNotNull(AllStock);
         }
+        
         /*
         [TestMethod]
         public void AddMethodOK()
@@ -48,9 +49,15 @@ namespace Testing3
         [TestMethod]
         public void StockListOK()
         {
+            //create an list of the stock collection class 
             clsStockCollection AllStock = new clsStockCollection();
+            //create some test data to assign to the property
+            //In this case, it needs to be a list property
             List<clsStock> TestList = new List<clsStock>();
+            //add item to the list 
+            //create the item for the test data
             clsStock TestStock = new clsStock();
+            //set its properties 
             TestStock.Active = true;
             TestStock.StockId = 1;
             TestStock.ItemName = "some name";
@@ -58,8 +65,11 @@ namespace Testing3
             TestStock.StockPrice = 12;
             TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
+            //add item to test list 
             TestList.Add(TestStock);
+            //assign data to the property
             AllStock.StockList = TestList;
+            //test to see if it works and that the values are the same.
             Assert.AreEqual(AllStock.StockList, TestList);
         }
         /*
@@ -75,15 +85,20 @@ namespace Testing3
         [TestMethod]
         public void ThisStockOK()
         {
+            //create an instance of the class 
             clsStockCollection AllStock = new clsStockCollection();
+            //create some test data to assign to the property
             clsStock TestStock = new clsStock();
+            //set the properties 
             TestStock.StockId = 1;
             TestStock.ItemName = "some name";
             TestStock.Quantity = 150;
             TestStock.StockPrice = 12;
             TestStock.StockAvailable = true;
             TestStock.DatePurchased = DateTime.Now.Date;
+            //assign the data to the properties 
             AllStock.ThisStock = TestStock;
+            //test to see if it works as planned.
             Assert.AreEqual(AllStock.ThisStock, TestStock);
         }
         /*
