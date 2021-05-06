@@ -19,14 +19,14 @@
         <div>
             <asp:ListBox ID="lstStaffList" runat="server" Height="518px" Width="871px"></asp:ListBox>
         </div>
-        <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
-        &nbsp;<asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
-            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
-        </p>
-        Enter a name <input id="txtEnterName" type="text" /><br />
+        <p style="height: 35px">
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" Width="76px" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" Width="75px" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" Width="74px" />
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" Width="76px" />
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" Width="75px" />
+        &nbsp;</p>
+        Enter a name : <input id="txtEnterName" type="text" /><br />
         <br />
         <br />
         <asp:Label ID="lblErrors" runat="server"></asp:Label>

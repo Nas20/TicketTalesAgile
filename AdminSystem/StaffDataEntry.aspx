@@ -40,6 +40,8 @@
         <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
         <br />
         <br />
+        <br />
+        <br />
         <asp:Label ID="lblStaffGender" runat="server" Text="Staff Gender"></asp:Label>
         <asp:CheckBox ID="Female" runat="server" Checked="True" />
 &nbsp;
@@ -50,14 +52,18 @@
         <asp:Label ID="Label2" runat="server" Text="Male"></asp:Label>
         <br />
         <br />
-        <br />
         <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
         <br />
+        <br />
+        <br />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnCancel" runat="server"  OnClick="btnCancel_Click" Text="Cancel" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+        <br />
+        <br />
+        <br />
     </form>
 </body>
 </html>

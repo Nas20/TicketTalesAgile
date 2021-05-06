@@ -177,7 +177,7 @@ namespace ClassLibrary
             if (Roles.Length == 0)
             {
                 //display invaled role message
-                Error = Error + "Invalid Role : ";
+                Error = Error + "The roles field must not be blank: ";
             }
             //if roles is more than 50 characters
             if (Roles.Length > 50)
@@ -189,7 +189,7 @@ namespace ClassLibrary
             if (Email.Length == 0)
             {
                 //record error
-                Error = Error + "The email field must not be blank : ";
+                Error = Error + "The email field must not be blank: ";
             }
             //if email field is more than 50 characters
             if (Email.Length > 50)
@@ -201,7 +201,7 @@ namespace ClassLibrary
             if (Name.Length == 0)
             {
                 //record error
-                Error = Error + "The name field  must not be blank : ";
+                Error = Error + "The name field  must not be blank: ";
             }
             //if name field is more than 50 characters
             if (Name.Length > 50)
@@ -213,7 +213,7 @@ namespace ClassLibrary
             if (PhoneNumber.Length == 0)
             {
                 //record error
-                Error = Error + "The phone number field  must not be blank : ";
+                Error = Error + "The phone number field  must not be blank: ";
             }
             //if phone number field is more than 50 characters
             if (PhoneNumber.Length > 50)
