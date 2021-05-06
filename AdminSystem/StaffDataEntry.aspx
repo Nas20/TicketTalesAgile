@@ -29,7 +29,7 @@
         <br />
         <br />
         <asp:Label ID="lblStaffEmail" runat="server" height="22px" Text="Staff Email" width="100px"></asp:Label>
-&nbsp;<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+&nbsp;<asp:TextBox ID="txtEmail" runat="server" Height="19px" OnTextChanged="txtEmail_TextChanged1"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="lblStaffRoles" runat="server" height="22px" Text="Staff Roles" width="100px"></asp:Label>
@@ -43,7 +43,11 @@
         <asp:Label ID="lblStaffGender" runat="server" Text="Staff Gender"></asp:Label>
         <asp:CheckBox ID="Female" runat="server" Checked="True" />
 &nbsp;
+        <asp:Label ID="Label1" runat="server" Text="Female"></asp:Label>
+&nbsp;&nbsp;&nbsp;
         <asp:CheckBox ID="Male" runat="server" />
+        &nbsp;&nbsp;
+        <asp:Label ID="Label2" runat="server" Text="Male"></asp:Label>
         <br />
         <br />
         <br />
