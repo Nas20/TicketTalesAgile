@@ -40,8 +40,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtDatePurchased.Text = AStock.ThisStock.DatePurchased.ToString();
         chkStockAvailable.Text = AStock.ThisStock.Active.ToString();
     }
+
     /*
-    protected void btnOK_Click(object sender, EventArgs e)
+    protected void BtnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
@@ -93,6 +94,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //redirect back to the listpage
             Response.Redirect("StockList.aspx");
         }
+    
         else
         {
             //display the error message
@@ -117,7 +119,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+    protected void BtnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("StockList.aspx");
     }

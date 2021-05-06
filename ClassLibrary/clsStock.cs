@@ -149,6 +149,11 @@ namespace ClassLibrary
 
         }
 
+        public void Find(string stockId)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Valid(string StockId, string ItemName, string Quantity, string StockPrice, string StockAvailable, string DatePurchased)
         {
             String Error = "";
