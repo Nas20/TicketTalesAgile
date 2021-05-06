@@ -141,6 +141,7 @@ namespace Testing1
             //test to see thisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
+
         /*
         [TestMethod]
         public void UpdateMethodOK()
@@ -149,25 +150,24 @@ namespace Testing1
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestItem = new clsStaff();
             Int32 PrimaryKey = 0;
-            //TestItem.Id = 2;
+            TestItem.Id = 2;
             TestItem.Name = "A name";
             TestItem.Email = "an email";
             TestItem.PhoneNumber = 112;
             TestItem.Roles = "some role";
-            //TestItem.Gender = false;
-            //TestItem.DOB = Convert.ToDateTime("19/04/1996");
+            TestItem.Gender = false;
+            TestItem.DOB = Convert.ToDateTime("19/04/1996");
             //assign the data to the property
             AllStaff.ThisStaff = TestItem;
             PrimaryKey = AllStaff.Add();
             TestItem.Id = PrimaryKey;
 
             //modified data
-            TestItem.Id = 4;
             TestItem.Name = " Another Name";
             TestItem.PhoneNumber = 114;
             TestItem.Roles = "Another Role";
-            //TestItem.Gender = true;
-            //TestItem.DOB = Convert.ToDateTime("20/05/1999");
+            TestItem.Gender = true;
+            TestItem.DOB = Convert.ToDateTime("20/05/1999");
             //assign the data to the property
             AllStaff.ThisStaff = TestItem;
             AllStaff.Update();
@@ -175,6 +175,8 @@ namespace Testing1
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
         */
+
+
         [TestMethod]
         public void DeleteMethodOK()
         {

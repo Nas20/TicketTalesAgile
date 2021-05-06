@@ -41,7 +41,7 @@ public partial class _1_List : System.Web.UI.Page
         //store -1 into the session object to indicate this is a new record
         Session["Id"] = -1;
         //redirect to the data entry page
-        Response.Redirect("AStaff.aspx");
+        Response.Redirect("StaffDataEntry.aspx");
     }
 
 
@@ -58,7 +58,7 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object
             Session["Id"] = Id;
             //redirect to the data entry page for staff
-            Response.Redirect("AStaff.aspx");
+            Response.Redirect("StaffDataEntry.aspx");
         }
         //if no record has been selected
         else
@@ -82,7 +82,7 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in a session object
             Session["Id"] = Id;
             //redirect to the delete page
-            Response.Redirect("AStaff.aspx");
+            Response.Redirect("DeleteStaff.aspx");
         }
         //if no record is selected
         else
