@@ -25,11 +25,11 @@
         <br />
         <br />
         <asp:Label ID="lblStaffName" runat="server" height="22px" Text="Staff Name" width="100px"></asp:Label>
-&nbsp;<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="lblStaffEmail" runat="server" height="22px" Text="Staff Email" width="100px"></asp:Label>
-&nbsp;<asp:TextBox ID="txtEmail" runat="server" Height="19px" OnTextChanged="txtEmail_TextChanged1"></asp:TextBox>
+        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="lblStaffRoles" runat="server" height="22px" Text="Staff Roles" width="100px"></asp:Label>
