@@ -59,7 +59,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
         //validate the data
         Error = AStock.Valid(StockId, ItemName, Quantity, Price, DatePurchased);
-        if (Error == "");
+        if (Error == "") ;
         {
             //capture the item name
             AStock.ItemName = ItemName;  //DONT MISS THIS BIT OUT!!!!
@@ -73,7 +73,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             clsStockCollection StockList = new clsStockCollection();
 
             //if this is a new record then add the data
-            //if (StockId = 1)
+            if (StockId = 1)
             {
                 //set the ThisOrder property
                 StockList.ThisStock = AStock;
@@ -115,5 +115,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPrice.Text = AStock.StockPrice.ToString();
             txtDatePurchased.Text = AStock.DatePurchased.ToString();
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StockList.aspx");
+    }
+
+    protected void BtnOK_Click(object sender, EventArgs e)
+    {
+
     }
 }
