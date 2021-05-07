@@ -17,7 +17,6 @@ namespace Testing3
         string DatePurchased = DateTime.Now.Date.ToString();
         //" 07/01/2021";
 
-
         [TestMethod]
         public void InstanceOK()
         {
